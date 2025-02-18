@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 
 export default function ArtistProfile({ artist, onClose, colors }) {
   if (!artist) return null;
@@ -46,7 +47,15 @@ export default function ArtistProfile({ artist, onClose, colors }) {
 
               {/* Right side - can be used for images or additional content */}
               <div className="relative h-full min-h-[300px] bg-gray-100">
-                {/* Placeholder for artist image */}
+                {artist.imageUrl && (
+                  <Image
+                    src={artist.imageUrl}
+                    alt={`${artist.name} profile`}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                )}
               </div>
             </div>
 
@@ -55,9 +64,12 @@ export default function ArtistProfile({ artist, onClose, colors }) {
               <p className="text-gray-800 leading-relaxed flex-1">
                 {artist.description}
               </p>
-              <button className="font-mono py-3 px-8 text-gray-800 hover:text-gray-600 transition-colors whitespace-nowrap">
+              <a 
+                href={`mailto:events@qs1.studio?subject=Booking Request ${artist.name}`}
+                className="font-mono py-3 px-8 text-gray-800 hover:text-white border border-gray-800 hover:bg-gray-800 transition-all duration-200 whitespace-nowrap"
+              >
                 REQUEST
-              </button>
+              </a>
             </div>
           </div>
 
