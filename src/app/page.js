@@ -5,26 +5,13 @@ import { useState, useEffect } from "react";
 import { artists } from "./data/artists";
 import ArtistProfile from "./components/ArtistProfile";
 
-function generateColors() {
-  // Generate base light color
-  const r = Math.floor(Math.random() * 30 + 225);
-  const g = Math.floor(Math.random() * 30 + 225);
-  const b = Math.floor(Math.random() * 30 + 225);
-
-  // Create brighter version for text backgrounds (increase by 15% but cap at 255)
-  const br = Math.min(255, Math.floor(r * 1.15));
-  const bg = Math.min(255, Math.floor(g * 1.15));
-  const bb = Math.min(255, Math.floor(b * 1.15));
-
-  return {
-    background: `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`,
-    textBg: `#${br.toString(16).padStart(2, '0')}${bg.toString(16).padStart(2, '0')}${bb.toString(16).padStart(2, '0')}`
-  };
-}
+const colors = {
+  background: "#e4e1f4",
+  textBg: "#f0eef8"
+};
 
 export default function Home() {
   const [selectedArtist, setSelectedArtist] = useState(null);
-  const [colors] = useState(generateColors);
 
   useEffect(() => {
     // Function to handle hash changes
