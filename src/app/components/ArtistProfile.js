@@ -5,7 +5,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-      <div className="w-full max-w-4xl pointer-events-auto" style={{ backgroundColor: colors?.background }}>
+      <div className="w-full max-w-4xl pointer-events-auto bg-white">
         <div className="p-8">
           {/* Header */}
           <div className="flex justify-end mb-8">
