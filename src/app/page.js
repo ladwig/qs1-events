@@ -11,8 +11,8 @@ import CustomCursor from "./components/CustomCursor";
 function generateColors() {
   // Generate vibrant base color with higher saturation
   const h = Math.floor(Math.random() * 360); // Hue: 0-360
-  const s = Math.floor(Math.random() * 20 + 70); // Saturation: 70-90%
-  const l = Math.floor(Math.random() * 15 + 75); // Lightness: 75-90%
+  const s = Math.floor(Math.random() * 15 + 85); // Saturation: 85-100%
+  const l = Math.floor(Math.random() * 20 + 60); // Lightness: 60-80%
 
   // Convert HSL to RGB
   const c = (1 - Math.abs(2 * l / 100 - 1)) * s / 100;
@@ -32,10 +32,10 @@ function generateColors() {
   const green = Math.round((g + m) * 255);
   const blue = Math.round((b + m) * 255);
 
-  // Create slightly lighter version for text backgrounds
-  const br = Math.min(255, Math.round(red * 1.1));
-  const bg = Math.min(255, Math.round(green * 1.1));
-  const bb = Math.min(255, Math.round(blue * 1.1));
+  // Create slightly lighter version for text backgrounds with more contrast
+  const br = Math.min(255, Math.round(red * 1.15));
+  const bg = Math.min(255, Math.round(green * 1.15));
+  const bb = Math.min(255, Math.round(blue * 1.15));
 
   return {
     background: `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`,

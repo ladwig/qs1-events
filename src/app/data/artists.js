@@ -38,7 +38,7 @@ export const artists = [
   },
   {
     name: 'Npoint_O',
-    setType: 'LIVE',
+    setType: 'DJ SET',
     basedIn: 'BERLIN, DE',
     type: 'BOOKINGS',
     description: 'Npoint_O pushes the boundaries of electronic music with innovative sound design and powerful beats...',
