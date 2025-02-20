@@ -135,7 +135,7 @@ export default function Home() {
         {/* First Section - Colorful Hero */}
         <section className="snap-section min-h-screen flex flex-col justify-between p-8" style={{ backgroundColor: colors.background }}>
           {/* Top Navigation */}
-          <nav className="w-full flex justify-between items-center">
+          <nav className="w-full flex justify-between items-center fade-in">
             <div className="w-1/3">
               <span className="text-sm" style={labelStyle}>ARTIST BOOKINGS & EVENT MANAGEMENT</span>
             </div>
@@ -156,7 +156,7 @@ export default function Home() {
           {/* Center Content */}
           <div className="flex justify-between items-center flex-1">
             <div className="w-1/3"></div>
-            <div className="w-1/3 flex justify-center items-center">
+            <div className="w-1/3 flex justify-center items-center fade-in">
               <div className="relative w-48 h-48">
                 <Image
                   src="/logo.svg"
@@ -169,14 +169,26 @@ export default function Home() {
               </div>
             </div>
             <div className="w-1/3">
-              <ul className="artist-list text-right flex flex-col gap-2">
+              <ul className="artist-list text-right flex flex-col gap-2 fade-in-delay">
                 {artists.map((artist, index) => (
                   <li 
                     key={index} 
-                    className="hover:cursor-pointer"
+                    className="hover:cursor-pointer relative"
                     onClick={() => handleArtistClick(artist)}
                   >
                     <span style={artistLabelStyle}>{artist.name}</span>
+                    {artist.imageUrl && (
+                      <div className="artist-preview">
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={artist.imageUrl}
+                            alt={`${artist.name} preview`}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -184,7 +196,7 @@ export default function Home() {
           </div>
 
           {/* Bottom Footer */}
-          <footer className="w-full flex justify-between items-center">
+          <footer className="w-full flex justify-between items-center fade-in">
             <div className="w-1/3">
               <a 
                 href="mailto:info@qs1.events"
@@ -212,7 +224,7 @@ export default function Home() {
         {/* Second Section - White Gallery */}
         <section id="artists" className="snap-section min-h-screen bg-white py-16 px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 fade-in">
               {artists.map((artist, index) => (
                 <div 
                   key={index}

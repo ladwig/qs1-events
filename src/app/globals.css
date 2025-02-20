@@ -26,6 +26,27 @@
   animation: bubble 0.7s ease-out forwards;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.fade-in-delay {
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
 html {
   scroll-behavior: smooth;
   height: 100%;
@@ -59,20 +80,53 @@ a, button, [role="button"], [onclick] {
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
 .artist-list {
   font-family: monospace;
   font-size: 1.2rem;
   line-height: 1.5;
+  position: relative;
 }
 
 .artist-list li {
   transition: color 0.3s ease, transform 0.3s ease;
   display: block;
+  position: relative;
 }
 
 .artist-list li:hover {
   color: #ff4d00;
   transform: translateX(-20px);
+}
+
+/* Artist list hover preview */
+.artist-preview {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.artist-list li:hover {
+  z-index: 9998;
+}
+
+.artist-list li:hover .artist-preview {
+  opacity: 1;
+}
+
+/* All text elements */
+.artist-list span {
+  position: relative;
+  z-index: 1;
 }
