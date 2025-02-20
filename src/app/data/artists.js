@@ -6,22 +6,24 @@ export const artists = [
     type: 'MGMT + BOOKINGS',
     description: 'Together, this dynamic trio delivers house music with an eclectic twist, consistently curating thrilling and diverse selections that transcend the ordinary. Their soundscapes are sexy, groovy, and brimming with attitude, making every performance a celebration of music\'s power to move and inspire. Whether it\'s a pulsating nightclub, a vibrant festival, or an intimate gathering, critical P, Jean-Jez, and Mesmer turn every event into a memorable dance experience. Get ready to be captivated by the freshest sounds in house music, brought to you by a trio that knows how to hiss less and purr more.',
     imageUrl: 'https://static.ra.co/images/profiles/square/kedibounce.jpg',
+    pressPackUrl: '/press/kedi-bounce-press-kit.zip',
     socialLinks: {
       soundcloud: 'https://soundcloud.com/kedi-bounce',
-      instagram: 'https://www.instagram.com/kedi.bounce/'
-    }
+      instagram: 'https://www.instagram.com/kedi.bounce/',
+    },
   },
   {
     name: 'Freigeist',
     setType: 'VINYL DJ SET',
     basedIn: 'BERLIN, DE',
     type: 'BOOKINGS',
-    description: 'At Freigeist’s, only vinyls are allowed in the booth. This young Berlin-Lichtenberg-based artist is a connoisseur of the soundscapes that shaped electronic music during the 1990s and 2000s. With a keen ear for house and techno rhythms, Freigeist\'s sets wander from crisp breaks to immersive four-to-the-floors, reflecting his insatiable appetite for sounds that uplift, inspire and make one move.',
+    description: 'At Freigeist\'s, only vinyls are allowed in the booth. This young Berlin-Lichtenberg-based artist is a connoisseur of the soundscapes that shaped electronic music during the 1990s and 2000s. With a keen ear for house and techno rhythms, Freigeist\'s sets wander from crisp breaks to immersive four-to-the-floors, reflecting his insatiable appetite for sounds that uplift, inspire and make one move.',
     imageUrl: 'https://static.ra.co/images/profiles/square/freigeist.jpg',
+    pressPackUrl: '/press/freigeist-press-kit.zip',
     socialLinks: {
       soundcloud: 'https://www.soundcloud.com/freigeist_music',
-      instagram: 'https://instagram.com/frei.geist'
-    }
+      instagram: 'https://instagram.com/frei.geist',
+    },
   },
   {
     name: 'Sparkling Water Dreams',

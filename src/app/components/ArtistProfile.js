@@ -6,7 +6,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-      <div className="w-full max-w-4xl pointer-events-auto bg-white max-h-[90vh] overflow-y-auto">
+      <div className="w-full max-w-4xl pointer-events-auto bg-white max-h-[100vh] md:max-h-none overflow-y-auto md:overflow-visible">
         <div className="p-4 sm:p-8">
           {/* Header */}
           <div className="flex justify-end mb-4 sm:mb-8">
@@ -59,7 +59,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
               </div>
             </div>
 
-            {/* Description and Request Button - Full Width */}
+            {/* Description and Request Button */}
             <div className="flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-8 mt-4 sm:mt-8">
               <p className="text-gray-800 leading-relaxed flex-1 text-sm sm:text-base">
                 {artist.description}
@@ -74,7 +74,16 @@ export default function ArtistProfile({ artist, onClose, colors }) {
           </div>
 
           {/* Social Links */}
-          <div className="flex flex-wrap gap-4 mt-4 sm:mt-8">
+          <div className="flex flex-wrap gap-4 mt-4 sm:mt-8 pb-2">
+            {artist.pressPackUrl && (
+              <a 
+                href={artist.pressPackUrl}
+                download
+                className="font-mono text-sm sm:text-base text-gray-800 hover:text-gray-600 transition-colors"
+              >
+                PRESS KIT
+              </a>
+            )}
             {artist.socialLinks.soundcloud && (
               <a 
                 href={artist.socialLinks.soundcloud} 
