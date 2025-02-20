@@ -202,7 +202,7 @@ export default function Home() {
                     />
                   )}
                 </div>
-                <h3 className="mt-4 text-center font-mono text-gray-800 group-hover:text-black">
+                <h3 className="mt-4 text-center text-gray-800 group-hover:text-black">
                   {artist.name}
                 </h3>
               </div>
