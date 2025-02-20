@@ -8,6 +8,24 @@
   --background-end-rgb: 0, 0, 0;
 }
 
+@keyframes bubble {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2.5);
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.animate-bubble {
+  animation: bubble 0.7s ease-out forwards;
+}
+
 html {
   scroll-behavior: smooth;
   height: 100%;
@@ -19,6 +37,16 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+/* Hide cursor on clickable elements but keep the pointer behavior */
+a, button, [role="button"], [onclick] {
+  cursor: none;
+}
+
+/* Show cursor for text selection */
+:root *::selection {
+  cursor: text;
 }
 
 .snap-container {
