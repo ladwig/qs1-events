@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { artists } from "./data/artists";
 import ArtistProfile from "./components/ArtistProfile";
 import Imprint from "./components/Imprint";
+import QS1Info from "./components/QS1Info";
 
 function generateColors() {
   // Generate vibrant base color with higher saturation
@@ -44,6 +45,7 @@ function generateColors() {
 export default function Home() {
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [showImprint, setShowImprint] = useState(false);
+  const [showQS1Info, setShowQS1Info] = useState(false);
   const [colors, setColors] = useState({
     background: "#ffffff",
     textBg: "#ffffff"
@@ -58,7 +60,10 @@ export default function Home() {
     // Function to handle hash changes
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      if (hash) {
+      if (hash === 'artists') {
+        // Scroll to artists section
+        document.getElementById('artists')?.scrollIntoView({ behavior: 'smooth' });
+      } else if (hash) {
         const matchingArtist = artists.find(
           artist => artist.name.toLowerCase().replace(/\s+/g, '-') === hash
         );
@@ -98,6 +103,14 @@ export default function Home() {
     setShowImprint(false);
   };
 
+  const handleQS1Click = () => {
+    setShowQS1Info(true);
+  };
+
+  const handleQS1Close = () => {
+    setShowQS1Info(false);
+  };
+
   const labelStyle = {
     backgroundColor: colors.textBg,
     color: '#333333',
@@ -124,7 +137,13 @@ export default function Home() {
             <span className="text-sm" style={labelStyle}>ARTIST BOOKINGS & EVENT MANAGEMENT</span>
           </div>
           <div className="w-1/3 text-center">
-            <span className="text-sm" style={labelStyle}>QS1 BERLIN</span>
+            <span 
+              className="text-sm cursor-pointer" 
+              style={labelStyle}
+              onClick={handleQS1Click}
+            >
+              QS1 BERLIN
+            </span>
           </div>
           <div className="w-1/3 text-right">
             <span className="text-sm" style={labelStyle}>2025©</span>
@@ -164,7 +183,13 @@ export default function Home() {
         {/* Bottom Footer */}
         <footer className="w-full flex justify-between items-center">
           <div className="w-1/3">
-            <span className="text-sm" style={labelStyle}>GENERAL CONTACT</span>
+            <a 
+              href="mailto:info@qs1.events"
+              className="text-sm cursor-pointer" 
+              style={labelStyle}
+            >
+              GENERAL CONTACT
+            </a>
           </div>
           <div className="w-1/3 text-center">
             {/* Center footer content */}
@@ -182,7 +207,7 @@ export default function Home() {
       </section>
 
       {/* Second Section - White Gallery */}
-      <section className="snap-section min-h-screen bg-white py-16 px-8">
+      <section id="artists" className="snap-section min-h-screen bg-white py-16 px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {artists.map((artist, index) => (
@@ -223,6 +248,11 @@ export default function Home() {
       {/* Imprint Popup */}
       {showImprint && (
         <Imprint onClose={handleImprintClose} />
+      )}
+
+      {/* QS1 Info Popup */}
+      {showQS1Info && (
+        <QS1Info onClose={handleQS1Close} />
       )}
     </div>
   );
