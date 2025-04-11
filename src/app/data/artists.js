@@ -81,17 +81,6 @@ export const artists = [
     }
   },
   {
-    name: 'Soul Brother',
-    setType: 'LIVE',
-    basedIn: 'MUNICH, DE',
-    type: 'MGMT + BOOKINGS',
-    description: 'Soul Brother brings soulful elements to electronic music, creating a unique fusion of genres...',
-    socialLinks: {
-      soundcloud: 'https://soundcloud.com/soulbrother',
-      instagram: 'https://instagram.com/soulbrother'
-    }
-  },
-  {
     name: 'DJ Speed',
     setType: 'DJ SET',
     basedIn: 'BERLIN, DE',
@@ -111,17 +100,6 @@ export const artists = [
     socialLinks: {
       soundcloud: 'https://soundcloud.com/djfrequency',
       instagram: 'https://instagram.com/dj_frequency'
-    }
-  },
-  {
-    name: 'STBL',
-    setType: 'LIVE + DJ',
-    basedIn: 'BERLIN, DE',
-    type: 'MGMT + BOOKINGS',
-    description: 'STBL creates stable chaos in their performances, mixing experimental sounds with danceable rhythms...',
-    socialLinks: {
-      soundcloud: 'https://soundcloud.com/stbl',
-      instagram: 'https://instagram.com/stbl'
     }
   }
 ]; 
