@@ -7,6 +7,8 @@ import ArtistProfile from "./components/ArtistProfile";
 import Imprint from "./components/Imprint";
 import QS1Info from "./components/QS1Info";
 import CustomCursor from "./components/CustomCursor";
+import SoundCloudModal from "./components/SoundCloudModal";
+import MerchModal from "./components/MerchModal";
 
 function generateColors() {
   // Generate vibrant base color with higher saturation
@@ -45,24 +47,20 @@ function generateColors() {
 
 export default function Home() {
   const [selectedArtist, setSelectedArtist] = useState(null);
-  const [showImprint, setShowImprint] = useState(false);
-  const [showQS1Info, setShowQS1Info] = useState(false);
+  const [activeModal, setActiveModal] = useState(null);
   const [colors, setColors] = useState({
     background: "#ffffff",
     textBg: "#ffffff"
   });
 
-  // Generate colors after initial render
   useEffect(() => {
     setColors(generateColors());
   }, []);
 
   useEffect(() => {
-    // Function to handle hash changes
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash === 'artists') {
-        // Scroll to artists section
         document.getElementById('artists')?.scrollIntoView({ behavior: 'smooth' });
       } else if (hash) {
         const matchingArtist = artists.find(
@@ -70,46 +68,40 @@ export default function Home() {
         );
         if (matchingArtist) {
           setSelectedArtist(matchingArtist);
+          handleModalOpen('artist');
         }
       } else {
         setSelectedArtist(null);
+        handleModalClose();
       }
     };
 
-    // Check hash on mount
     handleHashChange();
-
-    // Listen for hash changes
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const handleArtistClick = (artist) => {
-    if (selectedArtist === artist) {
+  const handleModalOpen = (modalType) => {
+    setActiveModal(modalType);
+  };
+
+  const handleModalClose = () => {
+    setActiveModal(null);
+    if (activeModal === 'artist') {
       window.location.hash = '';
-    } else {
-      window.location.hash = artist.name.toLowerCase().replace(/\s+/g, '-');
     }
   };
 
-  const handleClose = () => {
-    window.location.hash = '';
-  };
-
-  const handleImprintClick = () => {
-    setShowImprint(true);
-  };
-
-  const handleImprintClose = () => {
-    setShowImprint(false);
-  };
-
-  const handleQS1Click = () => {
-    setShowQS1Info(true);
-  };
-
-  const handleQS1Close = () => {
-    setShowQS1Info(false);
+  const handleArtistClick = (artist) => {
+    if (selectedArtist === artist) {
+      window.location.hash = '';
+      setSelectedArtist(null);
+      handleModalClose();
+    } else {
+      setSelectedArtist(artist);
+      handleModalOpen('artist');
+      window.location.hash = artist.name.toLowerCase().replace(/\s+/g, '-');
+    }
   };
 
   const labelStyle = {
@@ -143,7 +135,7 @@ export default function Home() {
               <span 
                 className="text-sm cursor-pointer" 
                 style={labelStyle}
-                onClick={handleQS1Click}
+                onClick={() => handleModalOpen('qs1')}
               >
                 QS1 BERLIN
               </span>
@@ -155,7 +147,24 @@ export default function Home() {
 
           {/* Center Content */}
           <div className="flex justify-between items-center flex-1">
-            <div className="w-1/3"></div>
+            <div className="w-1/3">
+              <div className="flex flex-col gap-4 items-start">
+                <span 
+                  className="text-sm cursor-pointer whitespace-nowrap" 
+                  style={labelStyle}
+                  onClick={() => handleModalOpen('soundcloud')}
+                >
+                  LISTEN
+                </span>
+                <span 
+                  className="text-sm cursor-pointer whitespace-nowrap" 
+                  style={labelStyle}
+                  onClick={() => handleModalOpen('merch')}
+                >
+                  MERCH
+                </span>
+              </div>
+            </div>
             <div className="w-1/3 flex justify-center items-center fade-in">
               <div className="relative w-48 h-48">
                 <Image
@@ -209,11 +218,18 @@ export default function Home() {
             <div className="w-1/3 text-center">
               {/* Center footer content */}
             </div>
-            <div className="w-1/3 text-right">
+            <div className="w-1/3 text-right flex justify-end gap-4">
+              <a 
+                href="/presskit"
+                className="text-sm cursor-pointer" 
+                style={labelStyle}
+              >
+                PRESS KIT
+              </a>
               <span 
                 className="text-sm cursor-pointer" 
                 style={labelStyle}
-                onClick={handleImprintClick}
+                onClick={() => handleModalOpen('imprint')}
               >
                 IMPRINT
               </span>
@@ -251,23 +267,29 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Artist Profile Popup */}
-        {selectedArtist && (
+        {/* Modals */}
+        {activeModal === 'artist' && selectedArtist && (
           <ArtistProfile 
             artist={selectedArtist} 
-            onClose={handleClose} 
+            onClose={handleModalClose} 
             colors={colors}
           />
         )}
 
-        {/* Imprint Popup */}
-        {showImprint && (
-          <Imprint onClose={handleImprintClose} />
+        {activeModal === 'imprint' && (
+          <Imprint onClose={handleModalClose} />
         )}
 
-        {/* QS1 Info Popup */}
-        {showQS1Info && (
-          <QS1Info onClose={handleQS1Close} />
+        {activeModal === 'qs1' && (
+          <QS1Info onClose={handleModalClose} />
+        )}
+
+        {activeModal === 'soundcloud' && (
+          <SoundCloudModal onClose={handleModalClose} />
+        )}
+
+        {activeModal === 'merch' && (
+          <MerchModal onClose={handleModalClose} />
         )}
       </div>
     </>

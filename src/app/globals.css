@@ -62,7 +62,7 @@ body {
 
 /* Hide cursor on clickable elements but keep the pointer behavior */
 a, button, [role="button"], [onclick] {
-  cursor: none;
+  cursor: default;
 }
 
 /* Show cursor for text selection */
