@@ -219,13 +219,13 @@ export default function Home() {
               {/* Center footer content */}
             </div>
             <div className="w-1/3 text-right flex justify-end gap-4">
-              <a 
+              {/* <a 
                 href="/presskit"
                 className="text-sm cursor-pointer" 
                 style={labelStyle}
               >
                 PRESS KIT
-              </a>
+              </a> */}
               <span 
                 className="text-sm cursor-pointer" 
                 style={labelStyle}

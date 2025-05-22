@@ -61,8 +61,10 @@ export default function ArtistProfile({ artist, onClose, colors }) {
 
             {/* Description and Request Button */}
             <div className="flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-8 mt-4 sm:mt-8">
-              <p className="text-gray-800 leading-relaxed flex-1 text-sm sm:text-base">
-                {artist.description}
+              <p className="text-gray-800 leading-relaxed flex-1 text-sm sm:text-base whitespace-pre-line">
+                {artist.description && artist.description.length > 350 ?
+                  artist.description.substring(0, artist.description.lastIndexOf(' ', 350)) + ' [...]' :
+                  artist.description}
               </p>
               <a 
                 href={`mailto:events@qs1.studio?subject=Booking Request ${artist.name}`}
@@ -75,7 +77,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
 
           {/* Social Links */}
           <div className="flex flex-wrap gap-4 mt-4 sm:mt-8 pb-2">
-            {artist.pressPackUrl && (
+            {/* {artist.pressPackUrl && (
               <a 
                 href={artist.pressPackUrl}
                 download
@@ -83,7 +85,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
               >
                 PRESS KIT
               </a>
-            )}
+            )} */}
             {artist.socialLinks.soundcloud && (
               <a 
                 href={artist.socialLinks.soundcloud} 
