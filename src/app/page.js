@@ -129,7 +129,7 @@ export default function Home() {
           {/* Top Navigation */}
           <nav className="w-full flex justify-between items-center fade-in">
             <div className="w-1/3">
-              <span className="text-sm" style={labelStyle}>ARTIST BOOKINGS & EVENT MANAGEMENT</span>
+              <span className="text-sm" style={labelStyle}>BOOKING & EVENT MANAGEMENT</span>
             </div>
             <div className="w-1/3 text-center">
               <span 

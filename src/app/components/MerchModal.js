@@ -9,21 +9,27 @@ export default function MerchModal({ onClose }) {
       soldOut: true
     },
     {
-      name: 'BERLIN TECHNO HOODIE',
-      price: '€85',
-      image: '/logo.svg',
+      name: 'Heavy Weight Classic Hoodie, black',
+      price: '62€',
+      image: '/merch/hoodie_front.webp',
       soldOut: true
     },
     {
-      name: 'STUDIO TOTE BAG',
-      price: '€25',
-      image: '/logo.svg',
+      name: 'Heavy Weight Classic Hoodie, black',
+      price: '58€',
+      image: '/merch/hoodie_front.webp',
       soldOut: true
     },
     {
-      name: 'LIMITED VINYL',
-      price: '€30',
-      image: '/logo.svg',
+      name: 'T-Shirt Spray, white',
+      price: '25€',
+      image: '/merch/white.webp',
+      soldOut: true
+    },
+    {
+      name: 'T-Shirt Spray, black',
+      price: '25€',
+      image: '/merch/black.png',
       soldOut: true
     }
   ];
