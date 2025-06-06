@@ -103,29 +103,6 @@ a, button, [role="button"], [onclick] {
   transform: translateX(-20px);
 }
 
-/* Artist list hover preview */
-.artist-preview {
-  position: absolute;
-  right: -60px;
-  top: 50%;
-  transform: translate(0, -50%);
-  width: 120px;
-  height: 120px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 9999;
-}
-
-.artist-list li:hover {
-  z-index: 9998;
-}
-
-.artist-list li:hover .artist-preview {
-  opacity: 1;
-}
-
 /* All text elements */
 .artist-list span {
   position: relative;

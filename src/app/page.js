@@ -120,6 +120,9 @@ export default function Home() {
     lineHeight: '1.5',
   };
 
+  // Sort artists alphabetically by name for consistent A-Z order
+  const sortedArtists = [...artists].sort((a, b) => a.name.localeCompare(b.name));
+
   return (
     <>
       <CustomCursor />
@@ -179,25 +182,13 @@ export default function Home() {
             </div>
             <div className="w-1/3">
               <ul className="artist-list text-right flex flex-col gap-2 fade-in-delay">
-                {artists.map((artist, index) => (
+                {sortedArtists.map((artist, index) => (
                   <li 
                     key={index} 
                     className="hover:cursor-pointer relative"
                     onClick={() => handleArtistClick(artist)}
                   >
                     <span style={artistLabelStyle}>{artist.name}</span>
-                    {artist.imageUrl && (
-                      <div className="artist-preview">
-                        <div className="relative w-full h-full">
-                          <Image
-                            src={artist.imageUrl}
-                            alt={`${artist.name} preview`}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                      </div>
-                    )}
                   </li>
                 ))}
               </ul>
@@ -241,7 +232,7 @@ export default function Home() {
         <section id="artists" className="snap-section min-h-screen bg-white py-16 px-8">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 fade-in">
-              {artists.map((artist, index) => (
+              {sortedArtists.map((artist, index) => (
                 <div 
                   key={index}
                   className="cursor-pointer group"
