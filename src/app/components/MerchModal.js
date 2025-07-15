@@ -1,7 +1,25 @@
 'use client';
 
+import { useState } from 'react';
+
 export default function MerchModal({ onClose }) {
+  const [hoveredItem, setHoveredItem] = useState(null);
+
   const merchItems = [
+    {
+      name: 'Classic T-Shirt, beige',
+      price: '25€',
+      image: '/merch/beige-1.jpg',
+      hoverImage: '/merch/beige-2.jpg',
+      soldOut: false
+    },
+    {
+      name: 'T-Shirt Spray, black',
+      price: '25€',
+      image: '/merch/spray-shirt-black-4.jpg',
+      hoverImage: '/merch/spray-shirt-black-3.jpg',
+      soldOut: false
+    },
     {
       name: 'Classic T-Shirt, black',
       price: '20€',
@@ -11,11 +29,12 @@ export default function MerchModal({ onClose }) {
     {
       name: 'Heavy Weight Classic Hoodie, black',
       price: '62€',
-      image: '/merch/hoodie_front.webp',
+      image: '/merch/classic-hoodie-6.jpg',
+      hoverImage: '/merch/classic-hoodie-4.jpg',
       soldOut: true
     },
     {
-      name: 'Heavy Weight Classic Hoodie, black',
+      name: 'Heavy Weight Clean Hoodie, black',
       price: '58€',
       image: '/merch/hoodie_front.webp',
       soldOut: true
@@ -26,12 +45,6 @@ export default function MerchModal({ onClose }) {
       image: '/merch/white.webp',
       soldOut: true
     },
-    {
-      name: 'T-Shirt Spray, black',
-      price: '25€',
-      image: '/merch/black.png',
-      soldOut: true
-    }
   ];
 
   return (
@@ -58,16 +71,21 @@ export default function MerchModal({ onClose }) {
             {/* Grid of items */}
             <div className="grid grid-cols-2 gap-6">
               {merchItems.map((item, index) => (
-                <div key={index} className="relative group">
+                <div 
+                  key={index} 
+                  className="relative group cursor-pointer"
+                  onMouseEnter={() => setHoveredItem(index)}
+                  onMouseLeave={() => setHoveredItem(null)}
+                >
                   {/* Image */}
                     <div className="aspect-square bg-gray-100 mb-2 relative overflow-hidden">
                     <div className="relative w-full h-full">
                       <div className="absolute inset-0 flex items-center justify-center">
                           <div className={`relative ${item.image === '/logo.svg' ? 'w-1/2 h-1/2' : 'w-full h-full'}`}>
                           <img
-                            src={item.image}
+                            src={hoveredItem === index && item.hoverImage ? item.hoverImage : item.image}
                             alt={item.name}
-                              className={`object-cover w-full h-full ${item.image === '/logo.svg' ? 'invert' : ''}`}
+                              className={`object-cover w-full h-full transition-all duration-300 ${item.image === '/logo.svg' ? 'invert' : ''}`}
                           />
                         </div>
                       </div>
