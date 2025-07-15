@@ -144,7 +144,7 @@ export default function Home() {
               </span>
             </div>
             <div className="w-1/3 text-right">
-              <span className="text-sm" style={labelStyle}>2025©</span>
+              <span className="text-sm" style={labelStyle}>©2025</span>
             </div>
           </nav>
 
@@ -199,7 +199,7 @@ export default function Home() {
           <footer className="w-full flex justify-between items-center fade-in">
             <div className="w-1/3">
               <a 
-                href="mailto:info@qs1.events"
+                href="mailto:bookings@qs1.berlin"
                 className="text-sm cursor-pointer" 
                 style={labelStyle}
               >

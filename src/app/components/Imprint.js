@@ -21,16 +21,16 @@ export default function Imprint({ onClose }) {
               <h2 className="text-2xl font-mono mb-4">IMPRESSUM</h2>
               <p className="text-gray-800 mb-2">Angaben gemäß § 5 TMG:</p>
               <p className="text-gray-800">
-                QS1 Studio GmbH<br />
-                Musterstraße 123<br />
-                10115 Berlin
+                QS1 Berlin<br />
+                Streustr. 20<br />
+                13068 Berlin
               </p>
             </div>
 
             <div>
               <h3 className="text-xl font-mono mb-2">VERTRETEN DURCH</h3>
               <p className="text-gray-800">
-                Geschäftsführer: Max Mustermann
+                Jacobsen / Soto Rodriguez GbR
               </p>
             </div>
 
@@ -38,34 +38,15 @@ export default function Imprint({ onClose }) {
               <h3 className="text-xl font-mono mb-2">KONTAKT</h3>
               <p className="text-gray-800">
                 Telefon: +49 (0) 30 123456789<br />
-                E-Mail: events@qs1.studio
+                E-Mail: bookings@qs1.berlin
               </p>
             </div>
 
-            <div>
-              <h3 className="text-xl font-mono mb-2">REGISTEREINTRAG</h3>
-              <p className="text-gray-800">
-                Eintragung im Handelsregister.<br />
-                Registergericht: Amtsgericht Berlin-Charlottenburg<br />
-                Registernummer: HRB 123456
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-mono mb-2">UMSATZSTEUER-ID</h3>
-              <p className="text-gray-800">
-                Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br />
-                DE 123 456 789
-              </p>
-            </div>
 
             <div>
               <h3 className="text-xl font-mono mb-2">VERANTWORTLICH FÜR DEN INHALT</h3>
               <p className="text-gray-800">
-                Max Mustermann<br />
-                QS1 Studio GmbH<br />
-                Musterstraße 123<br />
-                10115 Berlin
+               QS1 Berlin
               </p>
             </div>
           </div>

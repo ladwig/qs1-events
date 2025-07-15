@@ -171,9 +171,9 @@ export default function PressKit() {
             <section>
               <h2 className="text-xl font-bold mb-4">CONTACT</h2>
               <div className="text-sm space-y-2">
-                <p><strong>General:</strong> info@qs1.events</p>
-                <p><strong>Bookings:</strong> bookings@qs1.events</p>
-                <p><strong>Press:</strong> press@qs1.events</p>
+                <p><strong>General:</strong> bookings@qs1.berlin</p>
+                <p><strong>Bookings:</strong> bookings@qs1.berlin</p>
+                <p><strong>Press:</strong> bookings@qs1.berlin</p>
                 <p><strong>Location:</strong> Berlin, Germany</p>
               </div>
             </section>

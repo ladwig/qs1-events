@@ -39,8 +39,8 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                   </div>
 
                   <div>
-                    <h3 className="text-sm mb-2 font-mono text-gray-600">TYPE</h3>
-                    <p className="mt-1 text-gray-800">{artist.type}</p>
+                    <h3 className="text-sm mb-2 font-mono text-gray-600">GENRE</h3>
+                    <p className="mt-1 text-gray-800">{artist.genre && artist.genre.join(', ')}</p>
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                   artist.description}
               </p>
               <a 
-                href={`mailto:events@qs1.studio?subject=Booking Request ${artist.name}`}
+                href={`mailto:bookings@qs1.berlin?subject=Booking Request ${artist.name}`}
                 className="font-mono py-2 sm:py-3 px-6 sm:px-8 text-gray-800 hover:text-white border border-gray-800 hover:bg-gray-800 transition-all duration-200 whitespace-nowrap w-full sm:w-auto text-center"
               >
                 REQUEST

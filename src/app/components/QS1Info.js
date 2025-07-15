@@ -20,7 +20,7 @@ export default function QS1Info({ onClose }) {
             <div>
               <h2 className="text-2xl font-mono mb-4">QS1 BERLIN</h2>
               <p className="text-gray-800 leading-relaxed">
-                QS1 is a Berlin-based artist management and event production company, dedicated to curating exceptional electronic music experiences. We represent a carefully selected roster of innovative artists and collaborate with renowned venues and festivals to create unforgettable events.
+              QS1 is an Event Series and Agency based in Berlin. Founded in a derelict space in Charlottenburg in 2018, it now is the home for a variety of artists.
               </p>
             </div>
 
