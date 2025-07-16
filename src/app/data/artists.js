@@ -21,7 +21,7 @@ export const artists = [
     imageUrl: '/artists/freigeist/freigeist-1.webp',
     pressPackUrl: '/press/freigeist-press-kit.zip',
     socialLinks: {
-      soundcloud: 'https://www.soundcloud.com/freigeist_music',
+      soundcloud: 'https://www.soundcloud.com/freigeistvinyl',
       instagram: 'https://instagram.com/frei.geist',
     },
   },
@@ -43,7 +43,7 @@ export const artists = [
     setType: 'DJ SET',
     basedIn: 'BERLIN, DE',
     genre: ['HOUSE'],
-    description: "Hiss Less. Purr More\nIntroducing a trio of house cats, each bringing an electrifying touch to the decks and redefining the nightlife scene. Meet critical P, Jean-Jez, and Mesmer – a powerhouse team that blends their distinct styles to create an unforgettable experience.\n\ncritical P dominates with a raw, old-school sound that pulsates with relentless energy. Her sets chug and ride, invoking the gritty essence of house's golden era, delivering a nostalgic yet invigorating vibe that keeps the crowd moving.\n\nJean-Jez spices things up with deep and groovy elements, heavily influenced by Afro-Latin grooves, soulful house, and a touch of minimal and tech to keep things hot. His vibrant mixes make every track sizzle with life, creating an undeniable groove that ignites a tribal energy across the dance floor.\n\nMesmer, whose sets are a captivating blend of soulful and tribal sounds, interwoven with irresistible disco elements that transport you to a retro paradise. His ability to seamlessly mix genres keeps the dance floor in a perpetual state of blissful euphoria.\n\nTogether, this dynamic trio delivers house music with an eclectic twist, consistently curating thrilling and diverse selections that transcend the ordinary. Their soundscapes are sexy, groovy, and brimming with attitude, making every performance a celebration of music's power to move and inspire. Whether it's a pulsating nightclub, a vibrant festival, or an intimate gathering, critical P, Jean-Jez, and Mesmer turn every event into a memorable dance experience. Get ready to be captivated by the freshest sounds in house music, brought to you by a trio that knows how to hiss less and purr more.",
+    description: "Hiss Less. Purr More! Introducing a trio of house cats, each bringing an electrifying touch to the decks and redefining the nightlife scene. Meet critical P, Jean-Jez, and Mesmer – a powerhouse team that blends their distinct styles to create an unforgettable experience.\n\ncritical P dominates with a raw, old-school sound that pulsates with relentless energy. Her sets chug and ride, invoking the gritty essence of house's golden era, delivering a nostalgic yet invigorating vibe that keeps the crowd moving.\n\nJean-Jez spices things up with deep and groovy elements, heavily influenced by Afro-Latin grooves, soulful house, and a touch of minimal and tech to keep things hot. His vibrant mixes make every track sizzle with life, creating an undeniable groove that ignites a tribal energy across the dance floor.\n\nMesmer, whose sets are a captivating blend of soulful and tribal sounds, interwoven with irresistible disco elements that transport you to a retro paradise. His ability to seamlessly mix genres keeps the dance floor in a perpetual state of blissful euphoria.\n\nTogether, this dynamic trio delivers house music with an eclectic twist, consistently curating thrilling and diverse selections that transcend the ordinary. Their soundscapes are sexy, groovy, and brimming with attitude, making every performance a celebration of music's power to move and inspire. Whether it's a pulsating nightclub, a vibrant festival, or an intimate gathering, critical P, Jean-Jez, and Mesmer turn every event into a memorable dance experience. Get ready to be captivated by the freshest sounds in house music, brought to you by a trio that knows how to hiss less and purr more.",
     imageUrl: '/artists/kedi-bounce/kedi-bounce-1.webp',
     pressPackUrl: '/press/kedi-bounce-press-kit.zip',
     socialLinks: {
@@ -56,7 +56,7 @@ export const artists = [
     setType: 'DJ SET',
     basedIn: 'BERLIN, DE',
     genre: ['GARAGE','HOUSE'],
-    description: "Female identifying, Queer, Vinyl DJ from Yorkshire and now based in Berlin. \nCo-founder of Garage Girls.\nWith a varied taste in music, DJ NORTHERN plays a selection of dancefloor bangers, ranging from Garage, House, Techno, Breaks and Drum and Bass. DJ NORTHERN has played for the likes of Rinse FM, Buttons, Refuge Worldwide, and HÖR Berlin.\n\nDJ NORTHERN has a passion for queer parties and community and is a co-founder of FLINTA collective and party series, Garage Girls Berlin.",
+    description: "Female identifying, Queer, Vinyl DJ from Yorkshire and now based in Berlin.\nWith a varied taste in music, DJ NORTHERN plays a selection of dancefloor bangers, ranging from Garage, House, Techno, Breaks and Drum and Bass. DJ NORTHERN has played for the likes of Rinse FM, Buttons, Refuge Worldwide, and HÖR Berlin.\n\nDJ NORTHERN has a passion for queer parties and community and is a co-founder of FLINTA collective and party series, Garage Girls Berlin.",
     imageUrl: '/artists/dj-northern/dj-northern-1.webp',
     pressPackUrl: '/press/dj-northern-press-kit.zip',
     socialLinks: {
@@ -129,11 +129,11 @@ export const artists = [
     },
   },
   {
-    name: 'T-Rail',
+    name: 'T-RAIL',
     setType: 'DJ SET',
     basedIn: 'BERLIN, DE',
     genre: ['TBD'],
-    description: "The Dublin-born DJ who now calls Berlin his musical playground. With an eclectic taste for pumping sounds, T-Rail has gained a reputation as an artist who refuses to be confined by a single genre, a craft he has honed at his QS1 residency & his Berlin based party: Hip Knocker. From hypnotic loops to tripped-out house cuts and everything in between; it's a whirlwind ride from start to finish",
+    description: "The Dublin-born DJ who now calls Berlin his musical playground. With an eclectic taste for pumping sounds, T-RAIL has gained a reputation as an artist who refuses to be confined by a single genre, a craft he has honed at his QS1 residency & his Berlin based party: Hip Knocker. From hypnotic loops to tripped-out house cuts and everything in between; it's a whirlwind ride from start to finish.",
     imageUrl: '/artists/t-rail/t-rail-1.webp',
     pressPackUrl: '/press/t-rail-press-kit.zip',
     socialLinks: {

@@ -7,12 +7,12 @@ export default function QS1Info({ onClose }) {
       onClick={onClose}
     >
       <div 
-        className="w-full max-w-4xl pointer-events-auto bg-white"
+        className="w-full max-w-4xl pointer-events-auto bg-white h-[90vh] max-h-[90vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-4 sm:p-8">
-          {/* Header */}
-          <div className="flex justify-end mb-4 sm:mb-8">
+        {/* Fixed Header */}
+        <div className="p-4 sm:p-6 pb-0 flex-shrink-0">
+          <div className="flex justify-end mb-2 sm:mb-4">
             <button 
               onClick={onClose}
               className="text-gray-600 hover:text-gray-800 transition-colors text-xl"
@@ -20,8 +20,10 @@ export default function QS1Info({ onClose }) {
               X
             </button>
           </div>
+        </div>
 
-          {/* Content */}
+        {/* Scrollable Content */}
+        <div className="px-4 sm:px-6 pb-4 sm:pb-6 overflow-y-auto flex-1">
           <div className="space-y-8">
             <div>
               <h2 className="text-2xl font-mono mb-4">QS1 BERLIN</h2>
@@ -31,33 +33,33 @@ export default function QS1Info({ onClose }) {
             </div>
 
             <div>
-              <h3 className="text-xl font-mono mb-4">CONNECT WITH US</h3>
-              <div className="flex flex-wrap gap-4">
-                <a 
-                  href="https://www.qs1.studio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-sm sm:text-base text-gray-800 hover:text-gray-600 transition-colors"
-                >
-                  WEBSITE
-                </a>
-                <a 
-                  href="https://de.ra.co/promoters/111445"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-sm sm:text-base text-gray-800 hover:text-gray-600 transition-colors"
-                >
-                  RESIDENT ADVISOR
-                </a>
-                <a 
-                  href="https://www.instagram.com/qs1berlin/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-sm sm:text-base text-gray-800 hover:text-gray-600 transition-colors"
-                >
-                  INSTAGRAM
-                </a>
-              </div>
+              <p className="text-gray-800 leading-relaxed">
+              We focus on creating unique experiences through carefully curated events, bringing together established and emerging talents in electronic music.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-gray-800 leading-relaxed">
+              Our mission is to support the underground music scene by providing a platform for artists to showcase their work and connect with audiences who appreciate innovative sounds.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-mono mb-2">Services</h3>
+              <p className="text-gray-800 leading-relaxed">
+              - Event Management & Production<br />
+              - Artist Booking & Representation<br />
+              - Creative Consulting<br />
+              - Brand Partnerships
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-mono mb-2">Contact</h3>
+              <p className="text-gray-800 leading-relaxed">
+              For bookings and inquiries:<br />
+              bookings@qs1.berlin
+              </p>
             </div>
           </div>
         </div>

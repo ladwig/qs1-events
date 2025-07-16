@@ -7,12 +7,12 @@ export default function SoundCloudModal({ onClose }) {
       onClick={onClose}
     >
       <div 
-        className="w-full max-w-4xl pointer-events-auto bg-white"
+        className="w-full max-w-4xl pointer-events-auto bg-white h-[90vh] max-h-[90vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-4 sm:p-8">
-          {/* Header */}
-          <div className="flex justify-end mb-4 sm:mb-8">
+        {/* Fixed Header */}
+        <div className="p-4 sm:p-6 pb-0 flex-shrink-0">
+          <div className="flex justify-end mb-2 sm:mb-4">
             <button 
               onClick={onClose}
               className="text-gray-600 hover:text-gray-900 transition-colors text-xl"
@@ -20,8 +20,10 @@ export default function SoundCloudModal({ onClose }) {
               X
             </button>
           </div>
+        </div>
 
-          {/* Content */}
+        {/* Scrollable Content */}
+        <div className="px-4 sm:px-6 pb-4 sm:pb-6 overflow-y-auto flex-1">
           <div className="space-y-8">
             <iframe
               title="QS1 SoundCloud"
@@ -29,8 +31,15 @@ export default function SoundCloudModal({ onClose }) {
               height="450"
               scrolling="no"
               frameBorder="no"
-              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/qs1studio&color=%23ff4d00&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
-            ></iframe>
+              allow="autoplay"
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/1169606926&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+            />
+            
+            <div>
+              <p className="text-gray-800 text-center">
+                Listen to our latest mixes and tracks on SoundCloud
+              </p>
+            </div>
           </div>
         </div>
       </div>
