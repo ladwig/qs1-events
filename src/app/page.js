@@ -128,15 +128,15 @@ export default function Home() {
       <CustomCursor />
       <div className="snap-container">
         {/* First Section - Colorful Hero */}
-        <section className="snap-section min-h-screen flex flex-col justify-between p-8" style={{ backgroundColor: colors.background }}>
+        <section className="snap-section min-h-screen h-screen flex flex-col justify-between p-4 sm:p-8" style={{ backgroundColor: colors.background }}>
           {/* Top Navigation */}
           <nav className="w-full flex justify-between items-center fade-in">
             <div className="w-1/3">
-              <span className="text-sm" style={labelStyle}>BOOKING & EVENT MANAGEMENT</span>
+              <span className="hidden sm:block text-xs sm:text-sm" style={labelStyle}>BOOKING & EVENT MANAGEMENT</span>
             </div>
             <div className="w-1/3 text-center">
               <span 
-                className="text-sm cursor-pointer" 
+                className="text-xs sm:text-sm cursor-pointer" 
                 style={labelStyle}
                 onClick={() => handleModalOpen('qs1')}
               >
@@ -144,23 +144,23 @@ export default function Home() {
               </span>
             </div>
             <div className="w-1/3 text-right">
-              <span className="text-sm" style={labelStyle}>©2025</span>
+              <span className="hidden sm:inline text-xs sm:text-sm" style={labelStyle}>©2025</span>
             </div>
           </nav>
 
           {/* Center Content */}
-          <div className="flex justify-between items-center flex-1">
-            <div className="w-1/3">
-              <div className="flex flex-col gap-4 items-start">
+          <div className="flex flex-col sm:flex-row justify-between items-center flex-1 w-full gap-6 sm:gap-0">
+            <div className="w-full sm:w-1/3 flex justify-center sm:justify-start mb-4 sm:mb-0">
+              <div className="flex flex-row sm:flex-col gap-4 items-center sm:items-start w-full justify-center sm:justify-start">
                 <span 
-                  className="text-sm cursor-pointer whitespace-nowrap" 
+                  className="text-xs sm:text-sm cursor-pointer whitespace-nowrap" 
                   style={labelStyle}
                   onClick={() => handleModalOpen('soundcloud')}
                 >
                   LISTEN
                 </span>
                 <span 
-                  className="text-sm cursor-pointer whitespace-nowrap" 
+                  className="text-xs sm:text-sm cursor-pointer whitespace-nowrap" 
                   style={labelStyle}
                   onClick={() => handleModalOpen('merch')}
                 >
@@ -168,8 +168,8 @@ export default function Home() {
                 </span>
               </div>
             </div>
-            <div className="w-1/3 flex justify-center items-center fade-in">
-              <div className="relative w-48 h-48">
+            <div className="w-full sm:w-1/3 flex justify-center items-center fade-in mb-4 sm:mb-0">
+              <div className="relative w-32 h-32 sm:w-48 sm:h-48">
                 <Image
                   src="/logo.svg"
                   alt="Logo"
@@ -180,8 +180,9 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="w-1/3">
-              <ul className="artist-list text-right flex flex-col gap-2 fade-in-delay">
+            <div className="w-full sm:w-1/3 flex justify-center sm:justify-end">
+              {/* Mobile: vertical list, Desktop: column */}
+              <ul className="artist-list text-center sm:text-right flex flex-col gap-2 fade-in-delay w-full sm:w-auto justify-center sm:justify-end">
                 {sortedArtists.map((artist, index) => (
                   <li 
                     key={index} 
@@ -196,11 +197,11 @@ export default function Home() {
           </div>
 
           {/* Bottom Footer */}
-          <footer className="w-full flex justify-between items-center fade-in">
+          <footer className="w-full flex justify-between items-center fade-in text-xs sm:text-sm">
             <div className="w-1/3">
               <a 
                 href="mailto:bookings@qs1.berlin"
-                className="text-sm cursor-pointer" 
+                className="cursor-pointer" 
                 style={labelStyle}
               >
                 GENERAL CONTACT
@@ -212,13 +213,13 @@ export default function Home() {
             <div className="w-1/3 text-right flex justify-end gap-4">
               {/* <a 
                 href="/presskit"
-                className="text-sm cursor-pointer" 
+                className="cursor-pointer" 
                 style={labelStyle}
               >
                 PRESS KIT
               </a> */}
               <span 
-                className="text-sm cursor-pointer" 
+                className="cursor-pointer" 
                 style={labelStyle}
                 onClick={() => handleModalOpen('imprint')}
               >
