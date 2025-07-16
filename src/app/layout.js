@@ -22,6 +22,10 @@ export const metadata = {
     siteName: "QS1 Berlin",
     type: "website",
     locale: "en_US",
+  },
+  other: {
+    'apple-mobile-web-app-status-bar-style': 'light-content',
+    'theme-color': '#ffffff',
   }
 };
 
