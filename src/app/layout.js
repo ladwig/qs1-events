@@ -23,9 +23,17 @@ export const metadata = {
     type: "website",
     locale: "en_US",
   },
+  themeColor: '#ffffff',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    viewportFit: 'cover',
+  },
+  appleWebApp: {
+    statusBarStyle: 'default',
+  },
   other: {
-    'apple-mobile-web-app-status-bar-style': 'light-content',
-    'theme-color': '#ffffff',
+    'apple-mobile-web-app-status-bar-style': 'default',
   }
 };
 
