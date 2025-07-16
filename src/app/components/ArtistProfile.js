@@ -5,32 +5,63 @@ import { useEffect, useRef, useState } from 'react';
 export default function ArtistProfile({ artist, onClose, colors }) {
   const rainContainerRef = useRef(null);
   const contentRef = useRef(null);
+  const descriptionRef = useRef(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [needsTruncation, setNeedsTruncation] = useState(false);
   const [truncatedText, setTruncatedText] = useState('');
 
-  // Character-based truncation for mobile/desktop
+  // Simple truncation that ensures everything fits without scrolling
   useEffect(() => {
     if (!artist?.description) return;
     
-    const isMobile = window.innerWidth < 768;
-    const maxLength = isMobile ? 200 : 400; // Shorter on mobile, longer on desktop
-    
-    if (artist.description.length > maxLength) {
-      setNeedsTruncation(true);
-      // Find the last complete word or line break within the limit
-      let cutoff = maxLength;
-      while (cutoff > 0 && artist.description[cutoff] !== ' ' && artist.description[cutoff] !== '\n') {
-        cutoff--;
-      }
-      setTruncatedText(artist.description.substring(0, cutoff || maxLength));
-    } else {
-      setNeedsTruncation(false);
-      setTruncatedText(artist.description);
-    }
-    
-    // Reset expansion state when artist changes
+    // Reset state
     setIsExpanded(false);
+    
+    // Check if we're on mobile
+    const isMobile = window.innerWidth < 768;
+    
+    if (isMobile) {
+      // On mobile, use aggressive truncation to ensure REQUEST button is visible
+      const maxLength = 150; // Conservative length for mobile
+      
+      if (artist.description.length > maxLength) {
+        // Find word boundary
+        let cutoff = maxLength;
+        while (cutoff > 0 && 
+               artist.description[cutoff] !== ' ' && 
+               artist.description[cutoff] !== '\n') {
+          cutoff--;
+        }
+        
+        if (cutoff === 0) cutoff = maxLength; // Fallback
+        
+        setTruncatedText(artist.description.substring(0, cutoff));
+        setNeedsTruncation(true);
+      } else {
+        setTruncatedText(artist.description);
+        setNeedsTruncation(false);
+      }
+    } else {
+      // On desktop, use longer text or full text
+      const maxLength = 400;
+      
+      if (artist.description.length > maxLength) {
+        let cutoff = maxLength;
+        while (cutoff > 0 && 
+               artist.description[cutoff] !== ' ' && 
+               artist.description[cutoff] !== '\n') {
+          cutoff--;
+        }
+        
+        if (cutoff === 0) cutoff = maxLength;
+        
+        setTruncatedText(artist.description.substring(0, cutoff));
+        setNeedsTruncation(true);
+      } else {
+        setTruncatedText(artist.description);
+        setNeedsTruncation(false);
+      }
+    }
   }, [artist]);
 
   useEffect(() => {
