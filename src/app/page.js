@@ -190,7 +190,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="w-full sm:w-1/3 flex justify-center sm:justify-end">
+            <div className="w-full sm:w-1/3 flex justify-center sm:justify-end -mt-4 sm:mt-0">
               {/* Mobile: vertical list, Desktop: column */}
               <ul className="artist-list text-center sm:text-right flex flex-col gap-2 fade-in-delay w-full sm:w-auto justify-center sm:justify-end">
                 {sortedArtists.map((artist, index) => (

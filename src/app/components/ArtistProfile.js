@@ -35,7 +35,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
   if (!artist) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none bg-black bg-opacity-10">
       {/* Guinness Rain Effect */}
       {artist?.name === 'Josh Reid' && (
         <div
