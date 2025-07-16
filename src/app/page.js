@@ -128,7 +128,7 @@ export default function Home() {
       <CustomCursor />
       <div className="snap-container">
         {/* First Section - Colorful Hero */}
-        <section className="snap-section min-h-screen h-screen flex flex-col justify-between p-4 sm:p-8" style={{ backgroundColor: colors.background }}>
+        <section className="snap-section min-h-screen flex flex-col justify-between p-4 sm:p-8 pb-safe" style={{ backgroundColor: colors.background }}>
           {/* Top Navigation */}
           <nav className="w-full flex justify-between items-center fade-in">
             <div className="w-1/3">
@@ -207,7 +207,7 @@ export default function Home() {
           </div>
 
           {/* Bottom Footer */}
-          <footer className="w-full flex justify-between items-center fade-in text-xs sm:text-sm">
+          <footer className="w-full flex justify-between items-center fade-in text-xs sm:text-sm mb-4 sm:mb-6">
             <div className="w-1/3">
               <a 
                 href="mailto:bookings@qs1.berlin"

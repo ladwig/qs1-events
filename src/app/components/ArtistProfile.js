@@ -43,7 +43,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
           style={{ pointerEvents: 'none', position: 'fixed', inset: 0, zIndex: 10000 }}
         />
       )}
-      <div className="w-full max-w-4xl pointer-events-auto bg-white max-h-[100vh] md:max-h-none overflow-y-auto md:overflow-visible">
+      <div className="w-full max-w-4xl pointer-events-auto bg-white max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible">
         <div className="p-4 sm:p-8">
           {/* Header */}
           <div className="flex justify-end mb-4 sm:mb-8">
