@@ -48,6 +48,7 @@ function generateColors() {
 export default function Home() {
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [activeModal, setActiveModal] = useState(null);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
   const [colors, setColors] = useState({
     background: "#ffffff",
     textBg: "#ffffff"
@@ -77,6 +78,25 @@ export default function Home() {
     }
     statusBarMeta.content = 'light-content';
   }, [colors.background]);
+
+  // Handle scroll to show/hide scroll-to-top button
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollContainer = document.querySelector('.snap-container');
+      if (scrollContainer) {
+        const scrollTop = scrollContainer.scrollTop;
+        const viewportHeight = window.innerHeight;
+        // Show button when scrolled past 50% of first section
+        setShowScrollToTop(scrollTop > viewportHeight * 0.5);
+      }
+    };
+
+    const scrollContainer = document.querySelector('.snap-container');
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll);
+      return () => scrollContainer.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -122,6 +142,16 @@ export default function Home() {
       setSelectedArtist(artist);
       handleModalOpen('artist');
       window.location.hash = artist.name.toLowerCase().replace(/\s+/g, '-');
+    }
+  };
+
+  const scrollToTop = () => {
+    const scrollContainer = document.querySelector('.snap-container');
+    if (scrollContainer) {
+      scrollContainer.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -289,6 +319,29 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Scroll to Top Button */}
+        {showScrollToTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 w-12 h-12 transition-all duration-300 hover:scale-110 z-50 flex items-center justify-center"
+            aria-label="Scroll to top"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke={colors.background}
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5,12 12,5 19,12"></polyline>
+            </svg>
+          </button>
+        )}
 
         {/* Modals */}
         {activeModal === 'artist' && selectedArtist && (

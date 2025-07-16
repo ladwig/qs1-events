@@ -15,6 +15,11 @@ export const metadata = {
   title: "QS1 Berlin - Event & Booking Agency",
   description: "QS1 Berlin is an event and booking agency specializing in music, culture, and creative events. Discover our artists, book talent, and explore upcoming events.",
   keywords: "QS1 Berlin, event agency, techno, dj, booking agency, Berlin events, music agency, artist booking, creative events, Berlin artists",
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   openGraph: {
     title: "QS1 Berlin - Event & Booking Agency",
     description: "QS1 Berlin is an event and booking agency specializing in music, culture, and creative events. Discover our artists, book talent, and explore upcoming events.",
@@ -23,11 +28,6 @@ export const metadata = {
     type: "website",
     locale: "en_US",
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    viewportFit: 'cover',
-  },
   appleWebApp: {
     statusBarStyle: 'light-content',
   },
@@ -35,6 +35,14 @@ export const metadata = {
     'apple-mobile-web-app-status-bar-style': 'light-content',
   }
 };
+
+export function generateViewport() {
+  return {
+    width: 'device-width',
+    initialScale: 1,
+    viewportFit: 'cover',
+  }
+}
 
 export default function RootLayout({ children }) {
   return (
