@@ -132,7 +132,12 @@ export default function Home() {
           {/* Top Navigation */}
           <nav className="w-full flex justify-between items-center fade-in">
             <div className="w-1/3">
-              <span className="hidden sm:block text-xs sm:text-sm" style={labelStyle}>BOOKING & EVENT MANAGEMENT</span>
+              <span 
+                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight" 
+                style={{backgroundColor: colors.textBg}}
+              >
+                BOOKING & EVENT MANAGEMENT
+              </span>
             </div>
             <div className="w-1/3 text-center">
               <span 
@@ -144,14 +149,19 @@ export default function Home() {
               </span>
             </div>
             <div className="w-1/3 text-right">
-              <span className="hidden sm:inline text-xs sm:text-sm" style={labelStyle}>©2025</span>
+              <span 
+                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight" 
+                style={{backgroundColor: colors.textBg}}
+              >
+                ©2025
+              </span>
             </div>
           </nav>
 
           {/* Center Content */}
           <div className="flex flex-col sm:flex-row justify-between items-center flex-1 w-full gap-6 sm:gap-0">
-            <div className="w-full sm:w-1/3 flex justify-center sm:justify-start mb-4 sm:mb-0">
-              <div className="flex flex-row sm:flex-col gap-4 items-center sm:items-start w-full justify-center sm:justify-start">
+            <div className="w-full sm:w-1/3 flex justify-center sm:justify-start mb-4 sm:mb-0 mt-4 sm:mt-0">
+              <div className="flex flex-row sm:flex-col gap-8 sm:gap-4 items-center sm:items-start w-full justify-center sm:justify-start">
                 <span 
                   className="text-xs sm:text-sm cursor-pointer whitespace-nowrap" 
                   style={labelStyle}
