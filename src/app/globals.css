@@ -85,6 +85,46 @@ a, button, [role="button"], [onclick] {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+.pb-safe-extra {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
+}
+
+/* Mobile-specific section styling */
+.mobile-section {
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Mobile viewport adjustments */
+@media (max-width: 640px) {
+  .mobile-section {
+    /* Account for mobile browser UI */
+    min-height: calc(100vh - env(keyboard-inset-height, 0px));
+    min-height: calc(100dvh - env(keyboard-inset-height, 0px));
+    height: calc(100vh - env(keyboard-inset-height, 0px));
+    height: calc(100dvh - env(keyboard-inset-height, 0px));
+  }
+  
+  .pb-safe-extra {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem);
+  }
+}
+
+/* Ensure proper iOS support */
+@supports (padding: max(0px)) {
+  .pb-safe-extra {
+    padding-bottom: max(env(safe-area-inset-bottom), 1rem);
+  }
+  
+  @media (max-width: 640px) {
+    .pb-safe-extra {
+      padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+    }
+  }
+}
+
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -94,8 +134,8 @@ a, button, [role="button"], [onclick] {
 
 .artist-list {
   font-family: monospace;
-  font-size: 0.875rem; /* Smaller on mobile */
-  line-height: 1.3; /* Tighter line height on mobile */
+  font-size: 1rem; /* Increased from 0.75rem for better mobile readability */
+
   position: relative;
 }
 

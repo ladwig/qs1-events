@@ -57,6 +57,27 @@ export default function Home() {
     setColors(generateColors());
   }, []);
 
+  // Update theme color and status bar color dynamically
+  useEffect(() => {
+    // Update theme color meta tag
+    let themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    if (!themeColorMeta) {
+      themeColorMeta = document.createElement('meta');
+      themeColorMeta.name = 'theme-color';
+      document.head.appendChild(themeColorMeta);
+    }
+    themeColorMeta.content = colors.background;
+
+    // Update Apple status bar meta tag
+    let statusBarMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+    if (!statusBarMeta) {
+      statusBarMeta = document.createElement('meta');
+      statusBarMeta.name = 'apple-mobile-web-app-status-bar-style';
+      document.head.appendChild(statusBarMeta);
+    }
+    statusBarMeta.content = 'light-content';
+  }, [colors.background]);
+
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
@@ -128,9 +149,9 @@ export default function Home() {
       <CustomCursor />
       <div className="snap-container">
         {/* First Section - Colorful Hero */}
-        <section className="snap-section min-h-screen flex flex-col justify-between p-3 sm:p-8 pb-safe" style={{ backgroundColor: colors.background }}>
+        <section className="snap-section mobile-section flex flex-col justify-between p-3 sm:p-8" style={{ backgroundColor: colors.background }}>
           {/* Top Navigation */}
-          <nav className="w-full flex justify-between items-center fade-in">
+          <nav className="w-full flex justify-between items-center fade-in flex-shrink-0">
             <div className="w-1/3">
               <span 
                 className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight" 
@@ -159,9 +180,9 @@ export default function Home() {
           </nav>
 
           {/* Center Content */}
-          <div className="flex flex-col sm:flex-row justify-between items-center flex-1 w-full gap-4 sm:gap-0">
-            <div className="w-full sm:w-1/3 flex justify-center sm:justify-start mb-4 sm:mb-0 mt-4 sm:mt-0">
-              <div className="flex flex-row sm:flex-col gap-8 sm:gap-4 items-center sm:items-start w-full justify-center sm:justify-start">
+          <div className="flex flex-col sm:flex-row justify-between items-center flex-1 w-full gap-2 sm:gap-0 min-h-0">
+            <div className="w-full sm:w-1/3 flex justify-center sm:justify-start mb-2 sm:mb-0 mt-2 sm:mt-0">
+              <div className="flex flex-row sm:flex-col gap-6 sm:gap-4 items-center sm:items-start w-full justify-center sm:justify-start">
                 <span 
                   className="text-xs sm:text-sm cursor-pointer whitespace-nowrap" 
                   style={labelStyle}
@@ -178,8 +199,8 @@ export default function Home() {
                 </span>
               </div>
             </div>
-            <div className="w-full sm:w-1/3 flex justify-center items-center fade-in mb-0 sm:mb-0">
-              <div className="relative w-32 h-32 sm:w-48 sm:h-48">
+            <div className="w-full sm:w-1/3 flex justify-center items-center fade-in mb-0 sm:mb-0 mt-12 sm:mt-0">
+              <div className="relative w-24 h-24 sm:w-48 sm:h-48">
                 <Image
                   src="/logo.svg"
                   alt="Logo"
@@ -190,13 +211,13 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="w-full sm:w-1/3 flex justify-center sm:justify-end">
+            <div className="w-full sm:w-1/3 flex justify-center sm:justify-end flex-1 overflow-hidden">
               {/* Mobile: vertical list, Desktop: column */}
-              <ul className="artist-list text-center sm:text-right flex flex-col gap-1 sm:gap-2 fade-in-delay w-full sm:w-auto justify-center sm:justify-end mb-12 sm:mb-0">
+              <ul className="artist-list text-center sm:text-right flex flex-col gap-1.5 sm:gap-2 fade-in-delay w-full sm:w-auto justify-center sm:justify-end overflow-y-auto max-h-full">
                 {sortedArtists.map((artist, index) => (
                   <li 
                     key={index} 
-                    className="hover:cursor-pointer relative"
+                    className="hover:cursor-pointer relative flex-shrink-0"
                     onClick={() => handleArtistClick(artist)}
                   >
                     <span style={artistLabelStyle}>{artist.name}</span>
@@ -207,7 +228,7 @@ export default function Home() {
           </div>
 
           {/* Bottom Footer */}
-          <footer className="w-full flex justify-between items-center fade-in text-xs sm:text-sm mb-4 sm:mb-0">
+          <footer className="w-full flex justify-between items-center fade-in text-xs sm:text-sm flex-shrink-0 pb-safe-extra">
             <div className="w-1/3">
               <a 
                 href="mailto:bookings@qs1.berlin"
