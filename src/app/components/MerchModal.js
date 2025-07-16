@@ -48,8 +48,14 @@ export default function MerchModal({ onClose }) {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-      <div className="w-full max-w-2xl pointer-events-auto bg-white flex flex-col max-h-[80vh]">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-auto bg-black bg-opacity-10"
+      onClick={onClose}
+    >
+      <div 
+        className="w-full max-w-2xl pointer-events-auto bg-white flex flex-col max-h-[80vh]"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Fixed Header */}
         <div className="p-4 sm:p-6 border-b">
           <div className="flex justify-between items-center">

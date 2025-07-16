@@ -35,7 +35,10 @@ export default function ArtistProfile({ artist, onClose, colors }) {
   if (!artist) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none bg-black bg-opacity-10">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-auto bg-black bg-opacity-10"
+      onClick={onClose}
+    >
       {/* Guinness Rain Effect */}
       {artist?.name === 'Josh Reid' && (
         <div
@@ -43,7 +46,10 @@ export default function ArtistProfile({ artist, onClose, colors }) {
           style={{ pointerEvents: 'none', position: 'fixed', inset: 0, zIndex: 10000 }}
         />
       )}
-      <div className="w-full max-w-4xl pointer-events-auto bg-white max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible">
+      <div 
+        className="w-full max-w-4xl pointer-events-auto bg-white max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="p-4 sm:p-8">
           {/* Header */}
           <div className="flex justify-end mb-4 sm:mb-8">

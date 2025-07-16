@@ -115,9 +115,9 @@ export default function Home() {
   const artistLabelStyle = {
     backgroundColor: colors.textBg,
     color: '#333333',
-    padding: '0.1rem 0.3rem',
+    padding: '0.05rem 0.25rem',
     display: 'inline',
-    lineHeight: '1.5',
+    lineHeight: '1.3',
   };
 
   // Sort artists alphabetically by name for consistent A-Z order
@@ -128,7 +128,7 @@ export default function Home() {
       <CustomCursor />
       <div className="snap-container">
         {/* First Section - Colorful Hero */}
-        <section className="snap-section min-h-screen flex flex-col justify-between p-4 sm:p-8 pb-safe" style={{ backgroundColor: colors.background }}>
+        <section className="snap-section min-h-screen flex flex-col justify-between p-3 sm:p-8 pb-safe" style={{ backgroundColor: colors.background }}>
           {/* Top Navigation */}
           <nav className="w-full flex justify-between items-center fade-in">
             <div className="w-1/3">
@@ -159,7 +159,7 @@ export default function Home() {
           </nav>
 
           {/* Center Content */}
-          <div className="flex flex-col sm:flex-row justify-between items-center flex-1 w-full gap-6 sm:gap-0">
+          <div className="flex flex-col sm:flex-row justify-between items-center flex-1 w-full gap-4 sm:gap-0">
             <div className="w-full sm:w-1/3 flex justify-center sm:justify-start mb-4 sm:mb-0 mt-4 sm:mt-0">
               <div className="flex flex-row sm:flex-col gap-8 sm:gap-4 items-center sm:items-start w-full justify-center sm:justify-start">
                 <span 
@@ -178,7 +178,7 @@ export default function Home() {
                 </span>
               </div>
             </div>
-            <div className="w-full sm:w-1/3 flex justify-center items-center fade-in mb-4 sm:mb-0">
+            <div className="w-full sm:w-1/3 flex justify-center items-center fade-in mb-0 sm:mb-0">
               <div className="relative w-32 h-32 sm:w-48 sm:h-48">
                 <Image
                   src="/logo.svg"
@@ -190,9 +190,9 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="w-full sm:w-1/3 flex justify-center sm:justify-end -mt-4 sm:mt-0">
+            <div className="w-full sm:w-1/3 flex justify-center sm:justify-end">
               {/* Mobile: vertical list, Desktop: column */}
-              <ul className="artist-list text-center sm:text-right flex flex-col gap-2 fade-in-delay w-full sm:w-auto justify-center sm:justify-end">
+              <ul className="artist-list text-center sm:text-right flex flex-col gap-1 sm:gap-2 fade-in-delay w-full sm:w-auto justify-center sm:justify-end mb-12 sm:mb-0">
                 {sortedArtists.map((artist, index) => (
                   <li 
                     key={index} 
@@ -207,7 +207,7 @@ export default function Home() {
           </div>
 
           {/* Bottom Footer */}
-          <footer className="w-full flex justify-between items-center fade-in text-xs sm:text-sm mb-4 sm:mb-6">
+          <footer className="w-full flex justify-between items-center fade-in text-xs sm:text-sm">
             <div className="w-1/3">
               <a 
                 href="mailto:bookings@qs1.berlin"
@@ -220,7 +220,7 @@ export default function Home() {
             <div className="w-1/3 text-center">
               {/* Center footer content */}
             </div>
-            <div className="w-1/3 text-right flex justify-end gap-4">
+            <div className="w-1/3 text-right">
               {/* <a 
                 href="/presskit"
                 className="cursor-pointer" 

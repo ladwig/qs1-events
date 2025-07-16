@@ -2,8 +2,14 @@
 
 export default function QS1Info({ onClose }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-      <div className="w-full max-w-4xl pointer-events-auto bg-white">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-auto bg-black bg-opacity-10"
+      onClick={onClose}
+    >
+      <div 
+        className="w-full max-w-4xl pointer-events-auto bg-white"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="p-4 sm:p-8">
           {/* Header */}
           <div className="flex justify-end mb-4 sm:mb-8">

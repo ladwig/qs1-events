@@ -94,9 +94,16 @@ a, button, [role="button"], [onclick] {
 
 .artist-list {
   font-family: monospace;
-  font-size: 1.2rem;
-  line-height: 1.5;
+  font-size: 0.875rem; /* Smaller on mobile */
+  line-height: 1.3; /* Tighter line height on mobile */
   position: relative;
+}
+
+@media (min-width: 640px) {
+  .artist-list {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
 }
 
 .artist-list li {
