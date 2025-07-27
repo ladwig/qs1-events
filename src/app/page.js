@@ -105,7 +105,7 @@ export default function Home() {
         document.getElementById('artists')?.scrollIntoView({ behavior: 'smooth' });
       } else if (hash) {
         const matchingArtist = artists.find(
-          artist => artist.name.toLowerCase().replace(/\s+/g, '-') === hash
+          artist => artist.name.toLowerCase().replace(/\s+/g, '-') === hash && !artist.hide
         );
         if (matchingArtist) {
           setSelectedArtist(matchingArtist);
@@ -171,8 +171,8 @@ export default function Home() {
     lineHeight: '1.3',
   };
 
-  // Sort artists alphabetically by name for consistent A-Z order
-  const sortedArtists = [...artists].sort((a, b) => a.name.localeCompare(b.name));
+  // Filter out hidden artists and sort alphabetically by name for consistent A-Z order
+  const sortedArtists = [...artists].filter(artist => !artist.hide).sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <>
