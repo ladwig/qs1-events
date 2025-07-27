@@ -49,10 +49,7 @@ export default function Home() {
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [activeModal, setActiveModal] = useState(null);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
-  const [colors, setColors] = useState({
-    background: "#ffffff",
-    textBg: "#ffffff"
-  });
+  const [colors, setColors] = useState(null);
 
   useEffect(() => {
     setColors(generateColors());
@@ -60,6 +57,8 @@ export default function Home() {
 
   // Update theme color and status bar color dynamically
   useEffect(() => {
+    if (!colors) return;
+    
     // Update theme color meta tag
     let themeColorMeta = document.querySelector('meta[name="theme-color"]');
     if (!themeColorMeta) {
@@ -77,7 +76,7 @@ export default function Home() {
       document.head.appendChild(statusBarMeta);
     }
     statusBarMeta.content = 'light-content';
-  }, [colors.background]);
+  }, [colors]);
 
   // Handle scroll to show/hide scroll-to-top button
   useEffect(() => {
@@ -155,6 +154,14 @@ export default function Home() {
     }
   };
 
+  // Filter out hidden artists and sort alphabetically by name for consistent A-Z order
+  const sortedArtists = [...artists].filter(artist => !artist.hide).sort((a, b) => a.name.localeCompare(b.name));
+
+  // Don't render until colors are loaded to prevent hydration mismatch
+  if (!colors) {
+    return <div className="w-full h-screen bg-white"></div>;
+  }
+
   const labelStyle = {
     backgroundColor: colors.textBg,
     color: '#333333',
@@ -170,9 +177,6 @@ export default function Home() {
     display: 'inline',
     lineHeight: '1.3',
   };
-
-  // Filter out hidden artists and sort alphabetically by name for consistent A-Z order
-  const sortedArtists = [...artists].filter(artist => !artist.hide).sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <>
