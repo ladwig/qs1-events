@@ -70,12 +70,12 @@ export const artists = [
     },
   },
   {
-    name: 'Loopmasters',
+    name: 'TheLoopmasters',
     setType: 'DJ SET',
     basedIn: 'BERLIN, DE',
     genre: ['TECHNO'],
     hide: false,
-    description: "",
+    description: "TheLoopmasters is a collaborative project from DJ Frequency & DJ Speed. Rooted in the past, they bring their stripped back, loopy and dark spirited sound to the future.",
     imageUrl: '/artists/the-loopmasters/the-loopmasters-1.webp',
     pressPackUrl: '/press/loopmasters-press-kit.zip',
     socialLinks: {
