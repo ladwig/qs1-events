@@ -10,7 +10,8 @@ export const artists = [
     pressPackUrl: '/press/suz-press-kit.zip',
     socialLinks: {
       instagram: 'https://www.instagram.com/suz.dj_',
-      soundcloud: 'https://soundcloud.com/suzberlin'
+      soundcloud: 'https://soundcloud.com/suzberlin',
+      residentAdvisor: 'https://ra.co/dj/s%C3%BAz-1'
     },
   },
   {
@@ -25,6 +26,7 @@ export const artists = [
     socialLinks: {
       soundcloud: 'https://www.soundcloud.com/freigeistvinyl',
       instagram: 'https://instagram.com/frei.geist',
+      residentAdvisor: 'https://ra.co/dj/freigeist'
     },
   },
   {
@@ -38,7 +40,8 @@ export const artists = [
     pressPackUrl: '/press/josh-reid-press-kit.zip',
     socialLinks: {
       instagram: 'https://www.instagram.com/joshreid_92',
-      soundcloud: 'https://soundcloud.com/josh-reid-3'
+      soundcloud: 'https://soundcloud.com/josh-reid-3',
+      residentAdvisor: 'https://ra.co/dj/joshreid'
     },
   },
   {
@@ -53,6 +56,7 @@ export const artists = [
     socialLinks: {
       soundcloud: 'https://soundcloud.com/kedi-bounce',
       instagram: 'https://www.instagram.com/kedi.bounce/',
+      residentAdvisor: 'https://ra.co/dj/kedibounce'
     },
   },
   {
@@ -67,6 +71,7 @@ export const artists = [
     socialLinks: {
       soundcloud: 'https://soundcloud.com/djnorthern',
       instagram: 'https://www.instagram.com/dj.northern',
+      residentAdvisor: 'https://ra.co/dj/djnorthern'
     },
   },
   {
@@ -81,6 +86,7 @@ export const artists = [
     socialLinks: {
       soundcloud: 'https://soundcloud.com/loopmasterrecords',
       instagram: 'https://www.instagram.com/loopmaster.records',
+      residentAdvisor: 'https://ra.co/dj/theloopmasters'
     },
   },
   {
@@ -93,7 +99,8 @@ export const artists = [
     imageUrl: '/artists/dj-speed/dj-speed-1.webp',
     pressPackUrl: '/press/dj-speed-press-kit.zip',
     socialLinks: {
-      instagram: 'ps://www.instagram.com/dj.speed_',
+      instagram: 'https://www.instagram.com/dj.speed_/',
+      residentAdvisor: 'https://ra.co/dj/djspeed'
     },
   },
   {
@@ -108,6 +115,7 @@ export const artists = [
     socialLinks: {
       soundcloud: 'https://soundcloud.com/djfrequency97',
       instagram: 'https://www.instagram.com/dj.frequency/',
+      residentAdvisor: 'https://ra.co/dj/djfrequency'
     },
   },
   {
@@ -121,7 +129,8 @@ export const artists = [
     pressPackUrl: '/press/npoint_o-press-kit.zip',
     socialLinks: {
       soundcloud: 'https://soundcloud.com/npoint-o',
-      instagram: 'https://instagram.com/npoint_o'
+      instagram: 'https://instagram.com/npoint_o',
+      residentAdvisor: 'https://ra.co/dj/npoint_o'
     },
   },
   {
@@ -135,7 +144,8 @@ export const artists = [
     pressPackUrl: '/press/sparkling-water-dreams-press-kit.zip',
     socialLinks: {
       soundcloud: 'https://soundcloud.com/sparklingwaterdreams',
-      instagram: 'https://www.instagram.com/sparklingwater.dreams'
+      instagram: 'https://www.instagram.com/sparklingwater.dreams',
+      residentAdvisor: 'https://ra.co/dj/sparklingwaterdreams'
     },
   },
   {
@@ -148,7 +158,9 @@ export const artists = [
     imageUrl: '/artists/t-rail/t-rail-1.webp',
     pressPackUrl: '/press/t-rail-press-kit.zip',
     socialLinks: {
-      instagram: 'https://www.instagram.com/teeerail/'
+      instagram: 'https://www.instagram.com/teeerail/',
+      soundcloud: 'https://soundcloud.com/t-rail1',
+      residentAdvisor: 'https://ra.co/dj/t-rail'
     },
   },
   {

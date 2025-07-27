@@ -211,6 +211,16 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                 TIKTOK
               </a>
             )}
+            {artist.socialLinks.residentAdvisor && (
+              <a 
+                href={artist.socialLinks.residentAdvisor} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="font-mono text-sm sm:text-base text-gray-800 hover:text-gray-600 transition-colors"
+              >
+                RESIDENT ADVISOR
+              </a>
+            )}
           </div>
         </div>
       </div>
