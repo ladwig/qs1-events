@@ -75,7 +75,13 @@ export default function ArtistProfile({ artist, onClose, colors }) {
             <div className={`flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-8 ${
               artist.description && artist.description.length > 300 ? 'mt-4 sm:mt-8' : 'mt-4 sm:mt-6'
             }`}>
-              <div className="text-gray-800 leading-relaxed text-sm sm:text-base whitespace-pre-line pb-4" style={{ 
+              <a 
+                href={`mailto:bookings@qs1.berlin?subject=Booking Request ${artist.name}`}
+                className="font-mono py-2 sm:py-3 px-6 sm:px-8 text-gray-800 hover:text-white border border-gray-800 hover:bg-gray-800 transition-all duration-200 whitespace-nowrap w-full sm:w-auto text-center flex-shrink-0 order-first sm:order-last"
+              >
+                REQUEST
+              </a>
+              <div className="text-gray-800 leading-relaxed text-sm sm:text-base whitespace-pre-line pb-4 order-last sm:order-first" style={{ 
                 flex: artist.description && artist.description.length > 300 ? '1' : 'none',
                 maxWidth: artist.description && artist.description.length <= 300 ? '70%' : 'none'
               }}>
@@ -83,12 +89,6 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                   {artist.description}
                 </div>
               </div>
-              <a 
-                href={`mailto:bookings@qs1.berlin?subject=Booking Request ${artist.name}`}
-                className="font-mono py-2 sm:py-3 px-6 sm:px-8 text-gray-800 hover:text-white border border-gray-800 hover:bg-gray-800 transition-all duration-200 whitespace-nowrap w-full sm:w-auto text-center flex-shrink-0"
-              >
-                REQUEST
-              </a>
             </div>
           </div>
         </div>
