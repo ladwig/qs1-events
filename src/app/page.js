@@ -192,7 +192,7 @@ export default function Home() {
             </div>
             <div className="w-1/3 text-center">
               <span 
-                className="text-xs sm:text-sm cursor-pointer" 
+                className="text-xs sm:text-sm cursor-pointer mt-8 sm:mt-0" 
                 style={labelStyle}
                 onClick={() => handleModalOpen('qs1')}
               >
@@ -265,7 +265,7 @@ export default function Home() {
                 className="cursor-pointer" 
                 style={labelStyle}
               >
-                GENERAL CONTACT
+                CONTACT
               </a>
             </div>
             <div className="w-1/3 text-center">
