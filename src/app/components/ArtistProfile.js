@@ -16,7 +16,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
     >
 
       <div 
-        className="w-full max-w-4xl pointer-events-auto bg-white h-[90vh] max-h-[90vh] overflow-hidden flex flex-col"
+        className="w-full max-w-4xl pointer-events-auto bg-white max-h-[90vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Fixed Header */}
@@ -94,7 +94,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
         </div>
 
         {/* Fixed Footer - Social Links */}
-        <div className="px-4 sm:px-8 pb-4 sm:pb-8 pt-4 flex-shrink-0 border-t border-gray-100 bg-white">
+        <div className="px-4 sm:px-8 py-4 flex-shrink-0 border-t border-gray-100 bg-white">
           <div className="flex flex-wrap gap-4">
             {/* {artist.pressPackUrl && (
               <a 
