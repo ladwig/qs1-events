@@ -10,7 +10,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
   const [needsTruncation, setNeedsTruncation] = useState(false);
   const [truncatedText, setTruncatedText] = useState('');
 
-  // Simple truncation that ensures everything fits without scrolling
+  // Smart truncation: mobile = aggressive, desktop = minimal/none
   useEffect(() => {
     if (!artist?.description) return;
     
@@ -42,8 +42,8 @@ export default function ArtistProfile({ artist, onClose, colors }) {
         setNeedsTruncation(false);
       }
     } else {
-      // On desktop, use longer text or full text
-      const maxLength = 400;
+      // On desktop, only truncate if extremely long (over 1000 chars)
+      const maxLength = 1000; 
       
       if (artist.description.length > maxLength) {
         let cutoff = maxLength;
@@ -58,6 +58,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
         setTruncatedText(artist.description.substring(0, cutoff));
         setNeedsTruncation(true);
       } else {
+        // Show full description on desktop
         setTruncatedText(artist.description);
         setNeedsTruncation(false);
       }
@@ -106,7 +107,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
         />
       )}
       <div 
-        className="w-full max-w-4xl pointer-events-auto bg-white h-[90vh] max-h-[90vh] overflow-hidden flex flex-col"
+        className="w-full max-w-4xl pointer-events-auto bg-white md:h-auto md:max-h-[90vh] h-[90vh] max-h-[90vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Fixed Header */}
@@ -122,7 +123,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
         </div>
 
         {/* Scrollable Content */}
-        <div ref={contentRef} className="px-4 sm:px-8 overflow-y-auto flex-1">
+        <div ref={contentRef} className="px-4 sm:px-8 md:overflow-visible md:flex-none overflow-y-auto flex-1">
           {/* Artist Info */}
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-4 sm:mb-8">
@@ -141,11 +142,6 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                   <div>
                     <h3 className="text-sm mb-2 font-mono text-gray-600">BASED IN</h3>
                     <p className="mt-1 text-gray-800">{artist.basedIn}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="text-sm mb-2 font-mono text-gray-600">GENRE</h3>
-                    <p className="mt-1 text-gray-800">{artist.genre && artist.genre.join(', ')}</p>
                   </div>
                 </div>
               </div>
@@ -182,7 +178,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                     </>
                   ) : (
                     <>
-                      {artist.description}
+                  {artist.description}
                       {needsTruncation && (
                         <button
                           onClick={() => setIsExpanded(false)}
