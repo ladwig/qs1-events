@@ -109,7 +109,7 @@ export const artists = [
     basedIn: 'BERLIN, DE',
     genre: ['TECHNO'],
     hide: false,
-    description: "",
+    description: "The Irish born, Berlin based DJ Frequency (Josh Moody) has undoubtedly forged a name for himself amongst the European club scene through slick DJ sets and esteemed productions.",
     imageUrl: '/artists/dj-frequency/dj-frequency-1.webp',
     pressPackUrl: '/press/dj-frequency-press-kit.zip',
     socialLinks: {

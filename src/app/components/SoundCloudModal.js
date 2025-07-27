@@ -34,12 +34,6 @@ export default function SoundCloudModal({ onClose }) {
               allow="autoplay"
               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/1169606926&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
             />
-            
-            <div>
-              <p className="text-gray-800 text-center">
-                Listen to our latest mixes and tracks on SoundCloud
-              </p>
-            </div>
           </div>
         </div>
       </div>
