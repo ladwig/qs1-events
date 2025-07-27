@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 export default function ArtistProfile({ artist, onClose, colors }) {
-  const rainContainerRef = useRef(null);
   const contentRef = useRef(null);
   const descriptionRef = useRef(null);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -65,32 +64,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
     }
   }, [artist]);
 
-  useEffect(() => {
-    if (artist?.name === 'Josh Reid' && rainContainerRef.current) {
-      const container = rainContainerRef.current;
-      // Remove previous children if any
-      container.innerHTML = '';
-      const count = 500;
-      const fragment = document.createDocumentFragment();
-      for (let i = 0; i < count; i++) {
-        const img = document.createElement('img');
-        img.src = '/guinness.png';
-        img.alt = 'Guinness';
-        img.style.position = 'absolute';
-        img.style.top = '-60px';
-        img.style.left = `${Math.random() * 100}%`;
-        img.style.width = '48px';
-        img.style.height = 'auto';
-        img.style.pointerEvents = 'none';
-        img.style.zIndex = 9999;
-        const duration = 2 + Math.random() * 3; // 2-5s
-        const delay = Math.random() * 2; // 0-2s
-        img.style.animation = `guinness-rain ${duration}s linear ${delay}s forwards`;
-        fragment.appendChild(img);
-      }
-      container.appendChild(fragment);
-    }
-  }, [artist]);
+
 
   if (!artist) return null;
 
@@ -99,13 +73,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
       className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-auto bg-black bg-opacity-10"
       onClick={onClose}
     >
-      {/* Guinness Rain Effect */}
-      {artist?.name === 'Josh Reid' && (
-        <div
-          ref={rainContainerRef}
-          style={{ pointerEvents: 'none', position: 'fixed', inset: 0, zIndex: 10000 }}
-        />
-      )}
+
       <div 
         className="w-full max-w-4xl pointer-events-auto bg-white md:h-auto md:max-h-[90vh] h-[90vh] max-h-[90vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
@@ -246,13 +214,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
           </div>
         </div>
       </div>
-      <style jsx global>{`
-        @keyframes guinness-rain {
-          0% { transform: translateY(0); opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateY(110vh); opacity: 0; }
-        }
-      `}</style>
+
     </div>
   );
 } 
