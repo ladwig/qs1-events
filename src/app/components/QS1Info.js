@@ -57,6 +57,14 @@ export default function QS1Info({ onClose }) {
                 >
                   STUDIO SPACE
                 </a>
+                <a 
+                  href="https://de.ra.co/promoters/111445" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="font-mono text-sm sm:text-base text-gray-800 hover:text-gray-600 transition-colors"
+                >
+                  RESIDENT ADVISOR
+                </a>
               </div>
             </div>
           </div>
