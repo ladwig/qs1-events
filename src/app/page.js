@@ -162,18 +162,34 @@ export default function Home() {
             loop
             muted
             playsInline
-            preload="auto"
-            defaultMuted
-            webkit-playsinline="true"
+            preload="metadata"
+            controls={false}
             ref={(video) => {
               if (video) {
                 video.muted = true;
-                const playPromise = video.play();
-                if (playPromise !== undefined) {
-                  playPromise.catch(() => {
-                    // Auto-play was prevented, but we don't need to do anything
-                  });
-                }
+                video.defaultMuted = true;
+                video.volume = 0;
+                video.setAttribute('playsinline', '');
+                video.setAttribute('webkit-playsinline', '');
+                
+                // Force play on load
+                const handleCanPlay = () => {
+                  const playPromise = video.play();
+                  if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                      console.log('Autoplay prevented');
+                    });
+                  }
+                };
+                
+                video.addEventListener('canplay', handleCanPlay);
+                video.addEventListener('loadeddata', handleCanPlay);
+                
+                // Cleanup
+                return () => {
+                  video.removeEventListener('canplay', handleCanPlay);
+                  video.removeEventListener('loadeddata', handleCanPlay);
+                };
               }
             }}
           >
