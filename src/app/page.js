@@ -163,7 +163,7 @@ export default function Home() {
   }
 
   const labelStyle = {
-    backgroundColor: colors.textBg,
+    backgroundColor: '#ffffff',
     color: '#333333',
     padding: '0.25rem 0.5rem',
     display: 'inline-block',
@@ -171,7 +171,7 @@ export default function Home() {
   };
 
   const artistLabelStyle = {
-    backgroundColor: colors.textBg,
+    backgroundColor: '#ffffff',
     color: '#333333',
     padding: '0.05rem 0.25rem',
     display: 'inline',
@@ -192,18 +192,16 @@ export default function Home() {
             muted
             playsInline
           >
-            <source src="/test.mp4" type="video/mp4" />
+            <source src="/test2.mp4" type="video/mp4" />
           </video>
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+
           {/* Content wrapper */}
-          <div className="relative z-20 flex flex-col justify-between h-full w-full">
+          <div className="relative z-10 flex flex-col justify-between h-full w-full">
           {/* Top Navigation */}
           <nav className="w-full flex justify-between items-center fade-in flex-shrink-0">
             <div className="w-1/3">
               <span 
-                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight" 
-                style={{backgroundColor: colors.textBg}}
+                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight bg-white"
               >
                 BOOKING & EVENT MANAGEMENT
               </span>
@@ -219,8 +217,7 @@ export default function Home() {
             </div>
             <div className="w-1/3 text-right">
               <span 
-                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight" 
-                style={{backgroundColor: colors.textBg}}
+                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight bg-white"
               >
                 ©2025
               </span>
