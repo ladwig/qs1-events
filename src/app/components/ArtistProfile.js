@@ -20,7 +20,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Fixed Header */}
-        <div className="p-4 sm:p-6 pb-0 flex-shrink-0">
+        <div className="p-4 sm:p-4 pb-0 flex-shrink-0">
           <div className="flex justify-end mb-2 sm:mb-4">
             <button 
               onClick={onClose}
