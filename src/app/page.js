@@ -182,8 +182,22 @@ export default function Home() {
     <>
       <CustomCursor />
       <div className="snap-container">
-        {/* First Section - Colorful Hero */}
-        <section className="snap-section mobile-section flex flex-col justify-between p-3 sm:p-8" style={{ backgroundColor: colors.background }}>
+        {/* First Section - Video Hero */}
+        <section className="snap-section mobile-section flex flex-col justify-between p-3 sm:p-8 relative overflow-hidden">
+          {/* Video Background */}
+          <video
+            className="absolute inset-0 w-full h-full object-cover z-0"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/test.mp4" type="video/mp4" />
+          </video>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+          {/* Content wrapper */}
+          <div className="relative z-20 flex flex-col justify-between h-full w-full">
           {/* Top Navigation */}
           <nav className="w-full flex justify-between items-center fade-in flex-shrink-0">
             <div className="w-1/3">
@@ -292,6 +306,7 @@ export default function Home() {
               </span>
             </div>
           </footer>
+          </div>
         </section>
 
         {/* Second Section - White Gallery */}
