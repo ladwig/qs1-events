@@ -96,7 +96,7 @@ export const artists = [
     genre: ['TECHNO'],
     hide: false,
     description: "DJ Speed is a selector, co-founder of Loopmaster Records, and one half of 'TheLoopmasters'. Through this Alias, he's released numerous records pushing a looping, stripped back and mysterious sound. Renowned for his prowess behind the decks and a deep, diverse music collection, he brings an unmistakable energy to every set.",
-    imageUrl: '/artists/dj-speed/dj-speed-1.webp',
+    imageUrl: '/artists/dj-speed/dj-speed-2.webp',
     pressPackUrl: '/press/dj-speed-press-kit.zip',
     socialLinks: {
       instagram: 'https://www.instagram.com/dj.speed_/',
@@ -110,7 +110,7 @@ export const artists = [
     genre: ['TECHNO'],
     hide: false,
     description: "The Irish born, Berlin based DJ Frequency (Josh Moody) has undoubtedly forged a name for himself amongst the European club scene through slick DJ sets and esteemed productions.",
-    imageUrl: '/artists/dj-frequency/dj-frequency-1.webp',
+    imageUrl: '/artists/dj-frequency/dj-frequency-2.webp',
     pressPackUrl: '/press/dj-frequency-press-kit.zip',
     socialLinks: {
       soundcloud: 'https://soundcloud.com/djfrequency97',
@@ -155,7 +155,7 @@ export const artists = [
     genre: ['TBD'],
     hide: false,
     description: "The Dublin-born DJ who now calls Berlin his musical playground. With an eclectic taste for pumping sounds, T-RAIL has gained a reputation as an artist who refuses to be confined by a single genre, a craft he has honed at his QS1 residency & his Berlin based party: Hip Knocker. From hypnotic loops to tripped-out house cuts and everything in between; it's a whirlwind ride from start to finish.",
-    imageUrl: '/artists/t-rail/t-rail-1.webp',
+    imageUrl: '/artists/t-rail/t-rail-2.webp',
     pressPackUrl: '/press/t-rail-press-kit.zip',
     socialLinks: {
       instagram: 'https://www.instagram.com/teeerail/',
