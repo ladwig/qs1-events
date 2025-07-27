@@ -1,68 +1,9 @@
 'use client';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
 export default function ArtistProfile({ artist, onClose, colors }) {
   const contentRef = useRef(null);
-  const descriptionRef = useRef(null);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [needsTruncation, setNeedsTruncation] = useState(false);
-  const [truncatedText, setTruncatedText] = useState('');
-
-  // Smart truncation: mobile = aggressive, desktop = minimal/none
-  useEffect(() => {
-    if (!artist?.description) return;
-    
-    // Reset state
-    setIsExpanded(false);
-    
-    // Check if we're on mobile
-    const isMobile = window.innerWidth < 768;
-    
-    if (isMobile) {
-      // On mobile, use aggressive truncation to ensure REQUEST button is visible
-      const maxLength = 150; // Conservative length for mobile
-      
-      if (artist.description.length > maxLength) {
-        // Find word boundary
-        let cutoff = maxLength;
-        while (cutoff > 0 && 
-               artist.description[cutoff] !== ' ' && 
-               artist.description[cutoff] !== '\n') {
-          cutoff--;
-        }
-        
-        if (cutoff === 0) cutoff = maxLength; // Fallback
-        
-        setTruncatedText(artist.description.substring(0, cutoff));
-        setNeedsTruncation(true);
-      } else {
-        setTruncatedText(artist.description);
-        setNeedsTruncation(false);
-      }
-    } else {
-      // On desktop, only truncate if extremely long (over 1000 chars)
-      const maxLength = 1000; 
-      
-      if (artist.description.length > maxLength) {
-        let cutoff = maxLength;
-        while (cutoff > 0 && 
-               artist.description[cutoff] !== ' ' && 
-               artist.description[cutoff] !== '\n') {
-          cutoff--;
-        }
-        
-        if (cutoff === 0) cutoff = maxLength;
-        
-        setTruncatedText(artist.description.substring(0, cutoff));
-        setNeedsTruncation(true);
-      } else {
-        // Show full description on desktop
-        setTruncatedText(artist.description);
-        setNeedsTruncation(false);
-      }
-    }
-  }, [artist]);
 
 
 
@@ -75,7 +16,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
     >
 
       <div 
-        className="w-full max-w-4xl pointer-events-auto bg-white md:h-auto md:max-h-[90vh] h-[90vh] max-h-[90vh] overflow-hidden flex flex-col"
+        className="w-full max-w-4xl pointer-events-auto bg-white h-[90vh] max-h-[90vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Fixed Header */}
@@ -91,10 +32,12 @@ export default function ArtistProfile({ artist, onClose, colors }) {
         </div>
 
         {/* Scrollable Content */}
-        <div ref={contentRef} className="px-4 sm:px-8 md:overflow-visible md:flex-none overflow-y-auto flex-1">
+        <div ref={contentRef} className="px-4 sm:px-8 overflow-y-auto flex-1 min-h-0">
           {/* Artist Info */}
           <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-4 sm:mb-8">
+            <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 ${
+              artist.description && artist.description.length > 300 ? 'mb-4 sm:mb-8' : 'mb-4 sm:mb-6'
+            }`}>
               <div>
                 <div>
                   <h3 className="text-sm mb-2 font-mono text-gray-600">ARTIST / ALIAS</h3>
@@ -129,34 +72,15 @@ export default function ArtistProfile({ artist, onClose, colors }) {
             </div>
 
             {/* Description and Request Button */}
-            <div className="flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-8 mt-4 sm:mt-8">
-              <div className="text-gray-800 leading-relaxed flex-1 text-sm sm:text-base whitespace-pre-line">
+            <div className={`flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-8 ${
+              artist.description && artist.description.length > 300 ? 'mt-4 sm:mt-8' : 'mt-4 sm:mt-6'
+            }`}>
+              <div className="text-gray-800 leading-relaxed text-sm sm:text-base whitespace-pre-line pb-4" style={{ 
+                flex: artist.description && artist.description.length > 300 ? '1' : 'none',
+                maxWidth: artist.description && artist.description.length <= 300 ? '70%' : 'none'
+              }}>
                 <div>
-                  {!isExpanded ? (
-                    <>
-                      {truncatedText}
-                      {needsTruncation && (
-                        <button
-                          onClick={() => setIsExpanded(true)}
-                          className="text-gray-600 hover:text-gray-800 ml-1 font-mono transition-colors cursor-pointer"
-                        >
-                          [...]
-                        </button>
-                      )}
-                    </>
-                  ) : (
-                    <>
                   {artist.description}
-                      {needsTruncation && (
-                        <button
-                          onClick={() => setIsExpanded(false)}
-                          className="text-gray-600 hover:text-gray-800 ml-1 font-mono transition-colors block mt-2 cursor-pointer"
-                        >
-                          [show less]
-                        </button>
-                      )}
-                    </>
-                  )}
                 </div>
               </div>
               <a 
@@ -170,7 +94,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
         </div>
 
         {/* Fixed Footer - Social Links */}
-        <div className="px-4 sm:px-8 pb-4 sm:pb-8 pt-4 flex-shrink-0">
+        <div className="px-4 sm:px-8 pb-4 sm:pb-8 pt-4 flex-shrink-0 border-t border-gray-100 bg-white">
           <div className="flex flex-wrap gap-4">
             {/* {artist.pressPackUrl && (
               <a 
