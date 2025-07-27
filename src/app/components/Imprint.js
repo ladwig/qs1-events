@@ -26,36 +26,50 @@ export default function Imprint({ onClose }) {
         <div className="px-4 sm:px-6 pb-4 sm:pb-6 overflow-y-auto flex-1">
           <div className="space-y-8">
             <div>
-              <h2 className="text-2xl font-mono mb-4">IMPRESSUM</h2>
               <p className="text-gray-800 mb-2">Angaben gemäß § 5 TMG:</p>
               <p className="text-gray-800">
                 QS1 Berlin<br />
-                Daniel Hensel<br />
-                Neue Kantstraße 21<br />
-                14057 Berlin<br />
-                Deutschland
+               Jacobsen Soto Rodriguez GbR<br />
+               Streustraße 20<br />
+               10243 Berlin<br />
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-mono mb-2">Kontakt</h3>
+              <h3 className="text-lg font-mono mb-2 text-black">Kontakt</h3>
               <p className="text-gray-800">
                 E-Mail: bookings@qs1.berlin
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-mono mb-2">Haftungsausschluss</h3>
+              <h3 className="text-lg font-mono mb-2 text-black">Haftungsausschluss</h3>
               <p className="text-gray-800 leading-relaxed">
                 Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
               </p>
             </div>
 
             <div>
-              <h3 className="text-lg font-mono mb-2">Datenschutz</h3>
+              <h3 className="text-lg font-mono mb-2 text-black">Datenschutz</h3>
               <p className="text-gray-800 leading-relaxed">
                 Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten erhoben werden, erfolgt dies stets auf freiwilliger Basis.
               </p>
+            </div>
+
+            <div className="flex justify-center mt-6">
+              <div className="group inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 hover:bg-gray-100 rounded-full border border-gray-200 transition-all duration-300 hover:shadow-sm">
+                <span className="text-xs font-mono text-gray-600">made with</span>
+                <span className="text-red-500 animate-pulse group-hover:animate-bounce transition-all duration-300 text-sm">❤️</span>
+                <span className="text-xs font-mono text-gray-600">by</span>
+                <a 
+                  href="https://github.com/ladwig" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-xs font-mono text-gray-800 hover:text-black transition-colors font-medium"
+                >
+                  github.com/ladwig
+                </a>
+              </div>
             </div>
           </div>
         </div>
