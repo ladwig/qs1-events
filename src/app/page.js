@@ -176,6 +176,7 @@ export default function Home() {
     padding: '0.05rem 0.25rem',
     display: 'inline',
     lineHeight: '1.3',
+    fontFamily: 'var(--font-geist-sans)',
   };
 
   return (
