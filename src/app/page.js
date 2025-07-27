@@ -10,40 +10,7 @@ import CustomCursor from "./components/CustomCursor";
 import SoundCloudModal from "./components/SoundCloudModal";
 import MerchModal from "./components/MerchModal";
 
-function generateColors() {
-  // Generate vibrant base color with higher saturation
-  const h = Math.floor(Math.random() * 360); // Hue: 0-360
-  const s = Math.floor(Math.random() * 15 + 85); // Saturation: 85-100%
-  const l = Math.floor(Math.random() * 20 + 60); // Lightness: 60-80%
 
-  // Convert HSL to RGB
-  const c = (1 - Math.abs(2 * l / 100 - 1)) * s / 100;
-  const x = c * (1 - Math.abs((h / 60) % 2 - 1));
-  const m = l / 100 - c / 2;
-
-  let r, g, b;
-  if (h < 60) { r = c; g = x; b = 0; }
-  else if (h < 120) { r = x; g = c; b = 0; }
-  else if (h < 180) { r = 0; g = c; b = x; }
-  else if (h < 240) { r = 0; g = x; b = c; }
-  else if (h < 300) { r = x; g = 0; b = c; }
-  else { r = c; g = 0; b = x; }
-
-  // Convert to RGB values
-  const red = Math.round((r + m) * 255);
-  const green = Math.round((g + m) * 255);
-  const blue = Math.round((b + m) * 255);
-
-  // Create slightly lighter version for text backgrounds with more contrast
-  const br = Math.min(255, Math.round(red * 1.15));
-  const bg = Math.min(255, Math.round(green * 1.15));
-  const bb = Math.min(255, Math.round(blue * 1.15));
-
-  return {
-    background: `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`,
-    textBg: `#${br.toString(16).padStart(2, '0')}${bg.toString(16).padStart(2, '0')}${bb.toString(16).padStart(2, '0')}`
-  };
-}
 
 export default function Home() {
   const [selectedArtist, setSelectedArtist] = useState(null);
@@ -52,7 +19,10 @@ export default function Home() {
   const [colors, setColors] = useState(null);
 
   useEffect(() => {
-    setColors(generateColors());
+    setColors({
+      background: "#F39F07",
+      textBg: "#F39F07"
+    });
   }, []);
 
   // Update theme color and status bar color dynamically
@@ -192,6 +162,7 @@ export default function Home() {
             loop
             muted
             playsInline
+            preload="auto"
           >
             <source src="/test2.mp4" type="video/mp4" />
           </video>
