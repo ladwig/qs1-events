@@ -92,9 +92,10 @@ export default function ArtistProfile({ artist, onClose, colors }) {
               >
                 REQUEST
               </a>
-              <div className="text-gray-800 leading-relaxed text-sm sm:text-base whitespace-pre-line pb-4 order-last sm:order-first" style={{ 
-                flex: artist.description && artist.description.length > 300 ? '1' : 'none',
-                maxWidth: artist.description && artist.description.length <= 300 ? '70%' : 'none'
+              <div className={`text-gray-800 leading-relaxed text-sm sm:text-base whitespace-pre-line pb-4 order-last sm:order-first ${
+                artist.description && artist.description.length <= 300 ? 'sm:max-w-[70%]' : ''
+              }`} style={{ 
+                flex: artist.description && artist.description.length > 300 ? '1' : 'none'
               }}>
                 <div>
                   {artist.description}
