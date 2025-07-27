@@ -163,6 +163,19 @@ export default function Home() {
             muted
             playsInline
             preload="auto"
+            defaultMuted
+            webkit-playsinline="true"
+            ref={(video) => {
+              if (video) {
+                video.muted = true;
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                  playPromise.catch(() => {
+                    // Auto-play was prevented, but we don't need to do anything
+                  });
+                }
+              }
+            }}
           >
             <source src="/test2.mp4" type="video/mp4" />
           </video>
