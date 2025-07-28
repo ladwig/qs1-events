@@ -29,6 +29,15 @@ export default function QS1Info({ onClose }) {
               <p className="text-gray-800 leading-relaxed">
               QS1 is an Event Series and Agency based in Berlin. Founded in a derelict space in Charlottenburg in 2018, it now is the home for a variety of artists.
               </p>
+              <p className="text-gray-800 leading-relaxed mt-4">
+                For bookings and inquiries contact us via{' '}
+                <a 
+                  href="mailto:bookings@qs1.berlin" 
+                  className="text-gray-800 leading-relaxed font-medium hover:text-gray-600 transition-colors"
+                >
+                  bookings@qs1.berlin
+                </a>
+              </p>
             </div>
 
             <div>
@@ -72,4 +81,4 @@ export default function QS1Info({ onClose }) {
       </div>
     </div>
   );
-} 
+}
