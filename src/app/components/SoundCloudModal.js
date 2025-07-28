@@ -28,11 +28,11 @@ export default function SoundCloudModal({ onClose }) {
             <iframe
               title="QS1 SoundCloud"
               width="100%"
-              height="450"
+              height="550"
               scrolling="no"
               frameBorder="no"
               allow="autoplay"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/qs1studio&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/qs1studio&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=false&show_reposts=false&show_teaser=true&visual=false"
             />
           </div>
         </div>
