@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide c15t customize button - only specific selectors */
+[data-testid="cookie-banner-customize-button"],
+[data-c15t="customize-button"],
+.c15t-customize-button {
+  display: none !important;
+}
+
+/* Override c15t CSS variables for button hover states */
+:root {
+  --button-primary-hover: #374151; /* gray-700 instead of almost white */
+}
+
+/* More specific override for c15t accept button hover */
+[data-testid="cookie-banner-accept-button"]:hover,
+.c15t-button-primary:hover {
+  background-color: #374151 !important; /* gray-700 */
+  border-color: #374151 !important;
+}
+
+/* Remove blue focus outline from accept button */
+[data-testid="cookie-banner-accept-button"],
+[data-testid="cookie-banner-accept-button"]:focus,
+[data-testid="cookie-banner-accept-button"]:active,
+.c15t-button-primary,
+.c15t-button-primary:focus,
+.c15t-button-primary:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid #1f2937 !important; /* Keep gray-800 border */
+}
+
+[data-testid="cookie-banner-accept-button"]:hover,
+.c15t-button-primary:hover {
+  border: 1px solid #374151 !important; /* gray-700 border on hover */
+}
+
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;

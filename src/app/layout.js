@@ -59,9 +59,9 @@ export default function RootLayout({ children }) {
     'banner.header': 'p-6 pb-0',
     'banner.header.title': 'font-mono text-gray-800 font-medium text-base mb-2',
     'banner.header.description': 'text-gray-600 text-sm leading-relaxed mb-0',
-    'banner.footer': 'p-6 pt-4 flex flex-col sm:flex-row gap-3 sm:gap-2 sm:justify-end',
-    'banner.footer.accept-button': 'font-mono bg-gray-800 text-white border border-gray-800 px-4 py-2 text-sm hover:bg-gray-600 hover:border-gray-600 transition-colors order-1 sm:order-2 rounded-none',
-    'banner.footer.reject-button': 'font-mono bg-transparent text-gray-600 border border-gray-300 px-4 py-2 text-sm hover:text-gray-800 hover:border-gray-500 transition-colors order-2 sm:order-1 rounded-none',
+    'banner.footer': 'p-6 pt-4 flex flex-col gap-3 items-center', // Changed to vertical layout, centered
+    'banner.footer.accept-button': 'font-mono bg-gray-800 text-white border border-gray-800 px-4 py-2 text-sm hover:bg-gray-700 hover:border-gray-700 transition-colors rounded-none w-full order-1', // Full width, first
+    'banner.footer.reject-button': 'text-gray-400 hover:text-gray-600 transition-colors text-xs underline bg-transparent border-none p-0 font-normal order-2 mt-2 shadow-none outline-none focus:outline-none focus:ring-0 focus:shadow-none', // Small gray link, second, with margin-top
 
     // Consent Modal - matching your existing modal backdrop and style
     'dialog.backdrop': 'fixed inset-0 bg-black bg-opacity-10 flex items-center justify-center p-4 z-50',

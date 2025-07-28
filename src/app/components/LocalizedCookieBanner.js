@@ -29,7 +29,6 @@ export default function LocalizedCookieBanner({ theme }) {
   return (
     <CookieBanner 
       theme={theme}
-      customizeButtonText={null}
       title={texts.title}
       description={texts.description}
       acceptButtonText={texts.acceptButtonText}
