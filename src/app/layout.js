@@ -1,10 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PostHogProvider from "./components/PostHogProvider";
+import LocalizedCookieBanner from "./components/LocalizedCookieBanner";
 import { 
   ConsentManagerDialog,
   ConsentManagerProvider,
-  CookieBanner,
 } from '@c15t/nextjs';
 
 const geistSans = Geist({
@@ -62,7 +62,6 @@ export default function RootLayout({ children }) {
     'banner.footer': 'p-6 pt-4 flex flex-col sm:flex-row gap-3 sm:gap-2 sm:justify-end',
     'banner.footer.accept-button': 'font-mono bg-gray-800 text-white border border-gray-800 px-4 py-2 text-sm hover:bg-gray-600 hover:border-gray-600 transition-colors order-1 sm:order-2 rounded-none',
     'banner.footer.reject-button': 'font-mono bg-transparent text-gray-600 border border-gray-300 px-4 py-2 text-sm hover:text-gray-800 hover:border-gray-500 transition-colors order-2 sm:order-1 rounded-none',
-    'banner.footer.manage-button': 'font-mono bg-transparent text-gray-600 border border-gray-300 px-4 py-2 text-sm hover:text-gray-800 hover:border-gray-500 transition-colors order-3 rounded-none',
 
     // Consent Modal - matching your existing modal backdrop and style
     'dialog.backdrop': 'fixed inset-0 bg-black bg-opacity-10 flex items-center justify-center p-4 z-50',
@@ -99,48 +98,9 @@ export default function RootLayout({ children }) {
             mode: 'offline',
             consentCategories: ['necessary', 'analytics'],
             ignoreGeoLocation: false, // Respect geo-location for EU law compliance
-            // German/EU specific configuration
-            defaultLanguage: 'de',
-            texts: {
-              de: {
-                bannerTitle: 'Cookie-Einstellungen',
-                bannerDescription: 'Wir verwenden Cookies und ähnliche Technologien, um die Nutzung unserer Website zu analysieren und zu verbessern. Notwendige Cookies sind für die Funktion der Website erforderlich.',
-                bannerAcceptAll: 'Akzeptieren',
-                bannerRejectAll: 'Alle ablehnen',
-                bannerManageConsent: 'Einstellungen verwalten',
-                necessary: 'Notwendig',
-                analytics: 'Analyse',
-                necessaryDescription: 'Diese Cookies sind für die Grundfunktionen der Website erforderlich.',
-                analyticsDescription: 'Diese Cookies helfen uns, die Nutzung der Website zu verstehen und zu verbessern (PostHog Analytics).',
-                modalTitle: 'Cookie-Einstellungen',
-                modalDescription: 'Verwalten Sie Ihre Cookie-Präferenzen für unsere Website.',
-                modalSave: 'Einstellungen speichern',
-                modalAcceptAll: 'Alle akzeptieren',
-                modalRejectAll: 'Alle ablehnen'
-              },
-              en: {
-                bannerTitle: 'Cookie Settings',
-                bannerDescription: 'We use cookies and similar technologies to analyze and improve the use of our website. Necessary cookies are required for the website to function.',
-                bannerAcceptAll: 'Accept',
-                bannerRejectAll: 'Reject',
-                bannerManageConsent: 'Manage Settings',
-                necessary: 'Necessary',
-                analytics: 'Analytics',
-                necessaryDescription: 'These cookies are required for the basic functions of the website.',
-                analyticsDescription: 'These cookies help us understand and improve website usage (PostHog Analytics).',
-                modalTitle: 'Cookie Settings',
-                modalDescription: 'Manage your cookie preferences for our website.',
-                modalSave: 'Save Settings',
-                modalAcceptAll: 'Accept',
-                modalRejectAll: 'Reject'
-              }
-            }
           }}
         >
-          <CookieBanner 
-            theme={consentTheme} 
-            customizeButtonText={null}
-          />
+          <LocalizedCookieBanner theme={consentTheme} />
           <ConsentManagerDialog theme={consentTheme} />
           <PostHogProvider>
             {children}
