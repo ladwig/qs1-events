@@ -9,6 +9,7 @@ import QS1Info from "./components/QS1Info";
 import CustomCursor from "./components/CustomCursor";
 import SoundCloudModal from "./components/SoundCloudModal";
 import MerchModal from "./components/MerchModal";
+import { trackEvent, trackModalOpen, trackModalClose, trackReferrer, trackButtonClick } from "./utils/analytics";
 
 function generateColors() {
   // Generate vibrant base color with higher saturation
@@ -53,6 +54,9 @@ export default function Home() {
 
   useEffect(() => {
     setColors(generateColors());
+    
+    // Track referrer on initial page load
+    trackReferrer();
   }, []);
 
   // Update theme color and status bar color dynamically
@@ -123,9 +127,13 @@ export default function Home() {
 
   const handleModalOpen = (modalType) => {
     setActiveModal(modalType);
+    trackModalOpen(modalType);
   };
 
   const handleModalClose = () => {
+    if (activeModal) {
+      trackModalClose(activeModal);
+    }
     setActiveModal(null);
     if (activeModal === 'artist') {
       window.location.hash = '';
@@ -141,10 +149,22 @@ export default function Home() {
       setSelectedArtist(artist);
       handleModalOpen('artist');
       window.location.hash = artist.name.toLowerCase().replace(/\s+/g, '-');
+      
+      // Track artist selection from main page
+      trackEvent('artist_selected_from_grid', {
+        artist_name: artist.name,
+        artist_slug: artist.slug || artist.name.toLowerCase().replace(/\s+/g, '-'),
+        selection_context: 'main_page_grid'
+      });
     }
   };
 
-  const scrollToTop = () => {
+  const handleContactClick = () => {
+    trackButtonClick('contact_email', { location: 'footer' });
+  };
+
+  const handleScrollToTop = () => {
+    trackButtonClick('scroll_to_top');
     const scrollContainer = document.querySelector('.snap-container');
     if (scrollContainer) {
       scrollContainer.scrollTo({
@@ -266,6 +286,7 @@ export default function Home() {
             <div className="w-1/3">
               <a 
                 href="mailto:bookings@qs1.berlin"
+                onClick={handleContactClick}
                 className="cursor-pointer" 
                 style={labelStyle}
               >
@@ -327,7 +348,7 @@ export default function Home() {
         {/* Scroll to Top Button */}
         {showScrollToTop && (
           <button
-            onClick={scrollToTop}
+            onClick={handleScrollToTop}
             className="fixed bottom-6 right-6 w-12 h-12 transition-all duration-300 hover:scale-110 z-50 flex items-center justify-center"
             aria-label="Scroll to top"
           >
