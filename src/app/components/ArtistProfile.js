@@ -1,18 +1,37 @@
 'use client';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
+import { trackArtistProfileView, trackArtistBookingRequest, trackSocialLinkClick, trackModalClose } from '../utils/analytics';
 
 export default function ArtistProfile({ artist, onClose, colors }) {
   const contentRef = useRef(null);
 
-
+  // Track artist profile view when component mounts
+  useEffect(() => {
+    if (artist) {
+      trackArtistProfileView(artist.name, artist.slug);
+    }
+  }, [artist]);
 
   if (!artist) return null;
+
+  const handleBookingRequest = () => {
+    trackArtistBookingRequest(artist.name, artist.slug);
+  };
+
+  const handleSocialLinkClick = (platform, url) => {
+    trackSocialLinkClick(platform, artist.name, url);
+  };
+
+  const handleClose = () => {
+    trackModalClose('artist_profile', { artist_name: artist.name });
+    onClose();
+  };
 
   return (
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-auto bg-black bg-opacity-10"
-      onClick={onClose}
+      onClick={handleClose}
     >
 
       <div 
@@ -23,7 +42,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
         <div className="p-4 sm:p-4 pb-0 flex-shrink-0">
           <div className="flex justify-end mb-2 sm:mb-4">
             <button 
-              onClick={onClose}
+              onClick={handleClose}
               className="text-gray-600 hover:text-gray-800 transition-colors text-xl"
             >
               X
@@ -77,6 +96,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
             }`}>
               <a 
                 href={`mailto:bookings@qs1.berlin?subject=Booking Request ${artist.name}`}
+                onClick={handleBookingRequest}
                 className="font-mono py-2 sm:py-3 px-6 sm:px-8 text-gray-800 hover:text-white border border-gray-800 transition-all duration-200 whitespace-nowrap w-full sm:w-auto text-center flex-shrink-0 order-first sm:order-last"
                 style={{
                   '--hover-bg': colors?.background || '#000000'
@@ -122,6 +142,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                 href={artist.socialLinks.soundcloud} 
                 target="_blank" 
                 rel="noopener noreferrer" 
+                onClick={() => handleSocialLinkClick('soundcloud', artist.socialLinks.soundcloud)}
                 className="font-mono text-sm sm:text-base text-gray-800 hover:text-gray-600 transition-colors"
               >
                 SOUNDCLOUD
@@ -132,6 +153,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                 href={artist.socialLinks.instagram} 
                 target="_blank" 
                 rel="noopener noreferrer" 
+                onClick={() => handleSocialLinkClick('instagram', artist.socialLinks.instagram)}
                 className="font-mono text-sm sm:text-base text-gray-800 hover:text-gray-600 transition-colors"
               >
                 INSTAGRAM
@@ -142,6 +164,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                 href={artist.socialLinks.tiktok} 
                 target="_blank" 
                 rel="noopener noreferrer" 
+                onClick={() => handleSocialLinkClick('tiktok', artist.socialLinks.tiktok)}
                 className="font-mono text-sm sm:text-base text-gray-800 hover:text-gray-600 transition-colors"
               >
                 TIKTOK
@@ -152,6 +175,7 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                 href={artist.socialLinks.residentAdvisor} 
                 target="_blank" 
                 rel="noopener noreferrer" 
+                onClick={() => handleSocialLinkClick('resident_advisor', artist.socialLinks.residentAdvisor)}
                 className="font-mono text-sm sm:text-base text-gray-800 hover:text-gray-600 transition-colors"
               >
                 RESIDENT ADVISOR
