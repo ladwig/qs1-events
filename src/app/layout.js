@@ -1,6 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PostHogProvider from "./components/PostHogProvider";
+import { 
+  ConsentManagerDialog,
+  ConsentManagerProvider,
+  CookieBanner,
+} from '@c15t/nextjs';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,14 +51,101 @@ export function generateViewport() {
 }
 
 export default function RootLayout({ children }) {
+  // Theme matching your existing modal design patterns
+  const consentTheme = {
+    // Cookie Banner - positioned like a card, matching modal style
+    'banner.root': 'fixed bottom-0 left-0 right-0 sm:bottom-5 sm:left-auto sm:right-5 sm:max-w-lg z-50',
+    'banner.card': 'bg-white border border-gray-200 rounded-none',
+    'banner.header': 'p-6 pb-0',
+    'banner.header.title': 'font-mono text-gray-800 font-medium text-base mb-2',
+    'banner.header.description': 'text-gray-600 text-sm leading-relaxed mb-0',
+    'banner.footer': 'p-6 pt-4 flex flex-col sm:flex-row gap-3 sm:gap-2 sm:justify-end',
+    'banner.footer.accept-button': 'font-mono bg-gray-800 text-white border border-gray-800 px-4 py-2 text-sm hover:bg-gray-600 hover:border-gray-600 transition-colors order-1 sm:order-2 rounded-none',
+    'banner.footer.reject-button': 'font-mono bg-transparent text-gray-600 border border-gray-300 px-4 py-2 text-sm hover:text-gray-800 hover:border-gray-500 transition-colors order-2 sm:order-1 rounded-none',
+    'banner.footer.manage-button': 'font-mono bg-transparent text-gray-600 border border-gray-300 px-4 py-2 text-sm hover:text-gray-800 hover:border-gray-500 transition-colors order-3 rounded-none',
+
+    // Consent Modal - matching your existing modal backdrop and style
+    'dialog.backdrop': 'fixed inset-0 bg-black bg-opacity-10 flex items-center justify-center p-4 z-50',
+    'dialog.root': 'bg-white max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col rounded-none',
+    'dialog.header': 'p-4 sm:p-6 pb-0 flex-shrink-0',
+    'dialog.header.close-button': 'text-gray-600 hover:text-gray-900 transition-colors text-xl ml-auto block',
+    'dialog.header.title': 'font-mono text-gray-800 font-medium text-xl mb-4',
+    'dialog.header.description': 'text-gray-600 text-sm leading-relaxed',
+    'dialog.content': 'px-4 sm:px-6 overflow-y-auto flex-1',
+    'dialog.footer': 'p-4 sm:p-6 pt-0 flex-shrink-0 flex flex-col sm:flex-row gap-3 sm:gap-2 sm:justify-end border-t border-gray-100',
+    'dialog.footer.accept-button': 'font-mono bg-gray-800 text-white border border-gray-800 px-6 py-2 text-sm hover:bg-gray-600 hover:border-gray-600 transition-colors rounded-none',
+    'dialog.footer.reject-button': 'font-mono bg-transparent text-gray-600 border border-gray-300 px-6 py-2 text-sm hover:text-gray-800 hover:border-gray-500 transition-colors rounded-none',
+    'dialog.footer.save-button': 'font-mono bg-gray-800 text-white border border-gray-800 px-6 py-2 text-sm hover:bg-gray-600 hover:border-gray-600 transition-colors rounded-none',
+
+    // Consent Categories
+    'dialog.categories': 'space-y-4 py-4',
+    'dialog.category': 'bg-gray-50 border border-gray-200 p-4 rounded-none',
+    'dialog.category.header': 'flex justify-between items-center mb-2',
+    'dialog.category.title': 'font-mono text-gray-800 font-medium text-base',
+    'dialog.category.description': 'text-gray-600 text-sm leading-relaxed',
+    'dialog.category.toggle': 'w-11 h-6 bg-gray-200 rounded-full relative transition-colors',
+    'dialog.category.toggle.checked': 'bg-gray-800',
+    'dialog.category.toggle.thumb': 'absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform',
+    'dialog.category.toggle.thumb.checked': 'transform translate-x-5',
+  };
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PostHogProvider>
-          {children}
-        </PostHogProvider>
+        <ConsentManagerProvider
+          options={{
+            mode: 'offline',
+            consentCategories: ['necessary', 'analytics'],
+            ignoreGeoLocation: false, // Respect geo-location for EU law compliance
+            // German/EU specific configuration
+            defaultLanguage: 'de',
+            texts: {
+              de: {
+                bannerTitle: 'Cookie-Einstellungen',
+                bannerDescription: 'Wir verwenden Cookies und ähnliche Technologien, um die Nutzung unserer Website zu analysieren und zu verbessern. Notwendige Cookies sind für die Funktion der Website erforderlich.',
+                bannerAcceptAll: 'Akzeptieren',
+                bannerRejectAll: 'Alle ablehnen',
+                bannerManageConsent: 'Einstellungen verwalten',
+                necessary: 'Notwendig',
+                analytics: 'Analyse',
+                necessaryDescription: 'Diese Cookies sind für die Grundfunktionen der Website erforderlich.',
+                analyticsDescription: 'Diese Cookies helfen uns, die Nutzung der Website zu verstehen und zu verbessern (PostHog Analytics).',
+                modalTitle: 'Cookie-Einstellungen',
+                modalDescription: 'Verwalten Sie Ihre Cookie-Präferenzen für unsere Website.',
+                modalSave: 'Einstellungen speichern',
+                modalAcceptAll: 'Alle akzeptieren',
+                modalRejectAll: 'Alle ablehnen'
+              },
+              en: {
+                bannerTitle: 'Cookie Settings',
+                bannerDescription: 'We use cookies and similar technologies to analyze and improve the use of our website. Necessary cookies are required for the website to function.',
+                bannerAcceptAll: 'Accept',
+                bannerRejectAll: 'Reject',
+                bannerManageConsent: 'Manage Settings',
+                necessary: 'Necessary',
+                analytics: 'Analytics',
+                necessaryDescription: 'These cookies are required for the basic functions of the website.',
+                analyticsDescription: 'These cookies help us understand and improve website usage (PostHog Analytics).',
+                modalTitle: 'Cookie Settings',
+                modalDescription: 'Manage your cookie preferences for our website.',
+                modalSave: 'Save Settings',
+                modalAcceptAll: 'Accept',
+                modalRejectAll: 'Reject'
+              }
+            }
+          }}
+        >
+          <CookieBanner 
+            theme={consentTheme} 
+            customizeButtonText={null}
+          />
+          <ConsentManagerDialog theme={consentTheme} />
+          <PostHogProvider>
+            {children}
+          </PostHogProvider>
+        </ConsentManagerProvider>
       </body>
     </html>
   );
