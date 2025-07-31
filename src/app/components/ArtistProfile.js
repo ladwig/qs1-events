@@ -74,6 +74,11 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                     <p className="mt-1 text-gray-800">{artist.basedIn}</p>
                   </div>
                 </div>
+
+                <div className="mt-4 sm:mt-6">
+                  <h3 className="text-sm mb-2 font-mono text-gray-600">RELATIONSHIP</h3>
+                  <p className="mt-1 text-gray-800">{artist.artistType}</p>
+                </div>
               </div>
 
               {/* Right side - Image */}
@@ -94,26 +99,28 @@ export default function ArtistProfile({ artist, onClose, colors }) {
             <div className={`flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-8 ${
               artist.description && artist.description.length > 300 ? 'mt-4 sm:mt-8' : 'mt-4 sm:mt-6'
             }`}>
-              <a 
-                href={`mailto:bookings@qs1.berlin?subject=Booking Request ${artist.name}`}
-                onClick={handleBookingRequest}
-                className="font-mono py-2 sm:py-3 px-6 sm:px-8 text-gray-800 hover:text-white border border-gray-800 transition-all duration-200 whitespace-nowrap w-full sm:w-auto text-center flex-shrink-0 order-first sm:order-last"
-                style={{
-                  '--hover-bg': colors?.background || '#000000'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = colors?.background || '#000000';
-                  e.target.style.borderColor = colors?.background || '#000000';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = 'transparent';
-                  e.target.style.borderColor = '#1f2937'; // gray-800
-                }}
-              >
-                REQUEST
-              </a>
+              {!artist.hideRequestButton && (
+                <a 
+                  href={`mailto:bookings@qs1.berlin?subject=Booking Request ${artist.name}`}
+                  onClick={handleBookingRequest}
+                  className="font-mono py-2 sm:py-3 px-6 sm:px-8 text-gray-800 hover:text-white border border-gray-800 transition-all duration-200 whitespace-nowrap w-full sm:w-auto text-center flex-shrink-0 order-first sm:order-last"
+                  style={{
+                    '--hover-bg': colors?.background || '#000000'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = colors?.background || '#000000';
+                    e.target.style.borderColor = colors?.background || '#000000';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = 'transparent';
+                    e.target.style.borderColor = '#1f2937'; // gray-800
+                  }}
+                >
+                  REQUEST
+                </a>
+              )}
               <div className={`text-gray-800 leading-relaxed text-sm sm:text-base whitespace-pre-line pb-4 order-last sm:order-first ${
-                artist.description && artist.description.length <= 300 ? 'sm:max-w-[70%]' : ''
+                artist.description && artist.description.length <= 300 && !artist.hideRequestButton ? 'sm:max-w-[70%]' : ''
               }`} style={{ 
                 flex: artist.description && artist.description.length > 300 ? '1' : 'none'
               }}>
