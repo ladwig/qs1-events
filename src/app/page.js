@@ -78,14 +78,14 @@ export default function Home() {
   useEffect(() => {
     if (!colors) return;
     
-    // Update theme color meta tag
+    // Update theme color meta tag - use specific orange for iOS
     let themeColorMeta = document.querySelector('meta[name="theme-color"]');
     if (!themeColorMeta) {
       themeColorMeta = document.createElement('meta');
       themeColorMeta.name = 'theme-color';
       document.head.appendChild(themeColorMeta);
     }
-    themeColorMeta.content = colors.background;
+    themeColorMeta.content = '#ED750F';
 
     // Update Apple status bar meta tag
     let statusBarMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
