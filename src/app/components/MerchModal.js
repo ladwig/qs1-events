@@ -10,7 +10,7 @@ export default function MerchModal({ onClose }) {
     if (!existingScript) {
       // Load Ecwid script only if not already present
       const script = document.createElement('script');
-      script.src = 'https://app.ecwid.com/script.js?107567771&data_platform=code&data_date=2024-08-19';
+              script.src = 'https://app.ecwid.com/script.js?107567771&data_platform=code&data_date=2024-08-19';
       script.charset = 'utf-8';
       script.setAttribute('data-cfasync', 'false');
       document.head.appendChild(script);
@@ -19,7 +19,7 @@ export default function MerchModal({ onClose }) {
         // Initialize the store once script is loaded
         setTimeout(() => {
           if (window.xProductBrowser) {
-            window.xProductBrowser("id=my-store-107567771", "defaultCategoryId=172231018");
+            window.xProductBrowser("id=my-store-107567771", "defaultCategoryId=172237020");
           }
         }, 100);
       };
@@ -27,7 +27,7 @@ export default function MerchModal({ onClose }) {
       // Script already exists, just initialize
       setTimeout(() => {
         if (window.xProductBrowser) {
-          window.xProductBrowser("id=my-store-107567771", "defaultCategoryId=172231018");
+          window.xProductBrowser("id=my-store-107567771", "defaultCategoryId=172237020");
         }
       }, 100);
     }
@@ -69,6 +69,25 @@ export default function MerchModal({ onClose }) {
           <div className="p-4 sm:p-6 pt-0">
             {/* Ecwid Store */}
             <div id="my-store-107567771"></div>
+            <style jsx>{`
+              #my-store-107567771 .ec-wrapper .ecwid-productBrowser .ec-store .ec-store__content-wrapper .ec-grid .ec-grid__wrap .grid-product .grid-product__wrap .grid-product__image img,
+              #my-store-107567771 .ecwid .ecwid-productBrowser .ec-store .ec-store__content-wrapper .ec-grid .ec-grid__wrap .grid-product .grid-product__wrap .grid-product__image img {
+                object-fit: cover !important;
+                width: 100% !important;
+                height: 100% !important;
+              }
+              
+              #my-store-107567771 .ec-wrapper .ecwid-productBrowser .ec-store .ec-store__content-wrapper .ec-grid .ec-grid__wrap .grid-product .grid-product__wrap .grid-product__image,
+              #my-store-107567771 .ecwid .ecwid-productBrowser .ec-store .ec-store__content-wrapper .ec-grid .ec-grid__wrap .grid-product .grid-product__wrap .grid-product__image {
+                aspect-ratio: 1 / 1 !important;
+                overflow: hidden !important;
+              }
+              
+              #my-store-107567771 .ec-wrapper .ecwid-productBrowser .ec-store .ec-store__content-wrapper .ec-grid .ec-grid__wrap .grid-product,
+              #my-store-107567771 .ecwid .ecwid-productBrowser .ec-store .ec-store__content-wrapper .ec-grid .ec-grid__wrap .grid-product {
+                border: none !important;
+              }
+            `}</style>
           </div>
         </div>
       </div>
