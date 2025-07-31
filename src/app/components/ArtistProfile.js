@@ -104,12 +104,9 @@ export default function ArtistProfile({ artist, onClose, colors }) {
                   href={`mailto:bookings@qs1.berlin?subject=Booking Request ${artist.name}`}
                   onClick={handleBookingRequest}
                   className="font-mono py-2 sm:py-3 px-6 sm:px-8 text-gray-800 hover:text-white border border-gray-800 transition-all duration-200 whitespace-nowrap w-full sm:w-auto text-center flex-shrink-0 order-first sm:order-last"
-                  style={{
-                    '--hover-bg': colors?.background || '#000000'
-                  }}
                   onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = colors?.background || '#000000';
-                    e.target.style.borderColor = colors?.background || '#000000';
+                    e.target.style.backgroundColor = '#000000';
+                    e.target.style.borderColor = '#000000';
                   }}
                   onMouseLeave={(e) => {
                     e.target.style.backgroundColor = 'transparent';

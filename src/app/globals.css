@@ -169,17 +169,7 @@ a, button, [role="button"], [onclick] {
 }
 
 .artist-list {
-  font-family: monospace;
-  font-size: 1rem; /* Increased from 0.75rem for better mobile readability */
-
   position: relative;
-}
-
-@media (min-width: 640px) {
-  .artist-list {
-    font-size: 1.2rem;
-    line-height: 1.5;
-  }
 }
 
 .artist-list li {

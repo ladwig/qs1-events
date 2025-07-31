@@ -59,6 +59,21 @@ export default function Home() {
     trackReferrer();
   }, []);
 
+  // Handle video autoplay for iOS
+  useEffect(() => {
+    const video = document.querySelector('#bg-video');
+    if (video) {
+      // Force play for iOS devices
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          // Auto-play was prevented, but that's okay
+          console.log('Video autoplay was prevented:', error);
+        });
+      }
+    }
+  }, [colors]);
+
   // Update theme color and status bar color dynamically
   useEffect(() => {
     if (!colors) return;
@@ -182,42 +197,41 @@ export default function Home() {
     return <div className="w-full h-screen bg-white"></div>;
   }
 
-  const labelStyle = {
-    backgroundColor: colors.textBg,
-    color: '#333333',
-    padding: '0.25rem 0.5rem',
-    display: 'inline-block',
-    lineHeight: '1.25',
-  };
 
-  const artistLabelStyle = {
-    backgroundColor: colors.textBg,
-    color: '#333333',
-    padding: '0.05rem 0.25rem',
-    display: 'inline',
-    lineHeight: '1.3',
-  };
 
   return (
     <>
       <CustomCursor />
       <div className="snap-container">
-        {/* First Section - Colorful Hero */}
-        <section className="snap-section mobile-section flex flex-col justify-between p-3 sm:p-8" style={{ backgroundColor: colors.background }}>
+        {/* First Section - Video Background Hero */}
+        <section className="snap-section mobile-section flex flex-col justify-between p-3 sm:p-8 relative overflow-hidden">
+          {/* Video Background */}
+          <video
+            id="bg-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
+            preload="auto"
+          >
+            <source src="/bg.mp4" type="video/mp4" />
+          </video>
+
+          {/* Content Wrapper */}
+          <div className="relative z-20 flex flex-col justify-between h-full w-full">
           {/* Top Navigation */}
           <nav className="w-full flex justify-between items-center fade-in flex-shrink-0">
             <div className="w-1/3">
               <span 
-                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight" 
-                style={{backgroundColor: colors.textBg}}
+                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight bg-white"
               >
                 BOOKING & EVENT MANAGEMENT
               </span>
             </div>
             <div className="w-1/3 text-center">
               <span 
-                className="text-xs sm:text-sm cursor-pointer mt-8 sm:mt-0" 
-                style={labelStyle}
+                className="text-xs sm:text-sm cursor-pointer px-2 py-1 text-gray-800 leading-tight bg-white inline-block"
                 onClick={() => handleModalOpen('qs1')}
               >
                 QS1 BERLIN
@@ -225,8 +239,7 @@ export default function Home() {
             </div>
             <div className="w-1/3 text-right">
               <span 
-                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight" 
-                style={{backgroundColor: colors.textBg}}
+                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight bg-white"
               >
                 ©2025
               </span>
@@ -238,15 +251,13 @@ export default function Home() {
             <div className="w-full sm:w-1/3 flex justify-center sm:justify-start mb-2 sm:mb-0 mt-2 sm:mt-0">
               <div className="flex flex-row sm:flex-col gap-6 sm:gap-4 items-center sm:items-start w-full justify-center sm:justify-start">
                 <span 
-                  className="text-xs sm:text-sm cursor-pointer whitespace-nowrap" 
-                  style={labelStyle}
+                  className="text-xs sm:text-sm cursor-pointer whitespace-nowrap px-2 py-1 text-gray-800 leading-tight bg-white"
                   onClick={() => handleModalOpen('soundcloud')}
                 >
                   LISTEN
                 </span>
                 <span 
-                  className="text-xs sm:text-sm cursor-pointer whitespace-nowrap" 
-                  style={labelStyle}
+                  className="text-xs sm:text-sm cursor-pointer whitespace-nowrap px-2 py-1 text-gray-800 leading-tight bg-white"
                   onClick={() => handleModalOpen('merch')}
                 >
                   MERCH
@@ -267,14 +278,14 @@ export default function Home() {
             </div>
             <div className="w-full sm:w-1/3 flex justify-center sm:justify-end flex-1 overflow-hidden">
               {/* Mobile: vertical list, Desktop: column */}
-              <ul className="artist-list text-center sm:text-right flex flex-col gap-1.5 sm:gap-2 fade-in-delay w-full sm:w-auto justify-center sm:justify-end overflow-y-auto max-h-full">
+              <ul className="artist-list text-center sm:text-right flex flex-col gap-3 sm:gap-3 fade-in-delay w-full sm:w-auto justify-center sm:justify-end overflow-y-auto max-h-full">
                 {sortedArtists.map((artist, index) => (
                   <li 
                     key={index} 
                     className="hover:cursor-pointer relative flex-shrink-0"
                     onClick={() => handleArtistClick(artist)}
                   >
-                    <span style={artistLabelStyle}>{artist.name}</span>
+                    <span className="px-2 py-1 text-gray-800 bg-white text-xs sm:text-sm leading-tight">{artist.name}</span>
                   </li>
                 ))}
               </ul>
@@ -287,8 +298,7 @@ export default function Home() {
               <a 
                 href="mailto:bookings@qs1.berlin"
                 onClick={handleContactClick}
-                className="cursor-pointer" 
-                style={labelStyle}
+                className="cursor-pointer px-2 py-1 text-gray-800 leading-tight bg-white text-xs sm:text-sm"
               >
                 CONTACT
               </a>
@@ -305,14 +315,14 @@ export default function Home() {
                 PRESS KIT
               </a> */}
               <span 
-                className="cursor-pointer" 
-                style={labelStyle}
+                className="cursor-pointer px-2 py-1 text-gray-800 leading-tight bg-white text-xs sm:text-sm"
                 onClick={() => handleModalOpen('imprint')}
               >
                 IMPRINT
               </span>
             </div>
           </footer>
+          </div>
         </section>
 
         {/* Second Section - White Gallery */}
@@ -357,7 +367,7 @@ export default function Home() {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke={colors.background}
+              stroke="white"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
