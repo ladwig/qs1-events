@@ -278,7 +278,7 @@ export default function Home() {
             </div>
             <div className="w-full sm:w-1/3 flex justify-center sm:justify-end flex-1 overflow-hidden">
               {/* Mobile: vertical list, Desktop: column */}
-              <ul className="artist-list text-center sm:text-right flex flex-col gap-3 sm:gap-3 fade-in-delay w-full sm:w-auto justify-center sm:justify-end overflow-y-auto max-h-full pt-2">
+              <ul className="artist-list text-center sm:text-right flex flex-col gap-3 sm:gap-3 fade-in-delay w-full sm:w-auto justify-center sm:justify-end overflow-y-auto max-h-full pt-2 pb-2">
                 {sortedArtists.map((artist, index) => (
                   <li 
                     key={index} 
