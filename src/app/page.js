@@ -293,7 +293,7 @@ export default function Home() {
           </div>
 
           {/* Bottom Footer */}
-          <footer className="w-full flex justify-between items-center fade-in text-xs sm:text-sm flex-shrink-0 pb-safe-extra">
+          <footer className="w-full flex justify-between items-center fade-in flex-shrink-0 pb-safe-extra">
             <div className="w-1/3">
               <a 
                 href="mailto:bookings@qs1.berlin"
