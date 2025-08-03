@@ -147,7 +147,7 @@ export default function RootLayout({ children }) {
           linkText="Get Tickets"
           isVisible={true}
           isDismissible={true}
-          backgroundColor="bg-gray-900"
+          backgroundColor="bg-black"
           textColor="text-white"
         />
         <ConsentManagerProvider
