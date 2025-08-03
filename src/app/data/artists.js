@@ -113,6 +113,7 @@ export const artists = [
     imageUrl: '/artists/dj-speed/dj-speed-2.webp',
     pressPackUrl: '/press/dj-speed-press-kit.zip',
     socialLinks: {
+      soundcloud: 'https://soundcloud.com/djspeeed',
       instagram: 'https://www.instagram.com/dj.speed_/',
       residentAdvisor: 'https://ra.co/dj/djspeed'
     },
