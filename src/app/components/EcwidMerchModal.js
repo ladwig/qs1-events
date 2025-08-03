@@ -18,6 +18,26 @@ export default function EcwidMerchModal({ onClose }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 
+  // Enhanced close handler that resets Ecwid state before closing
+  const handleClose = () => {
+    try {
+      // Force Ecwid back to category view immediately when closing
+      if (window.Ecwid && window.Ecwid.openPage) {
+        window.Ecwid.openPage('category', {categoryId: 172237020});
+      }
+      
+      // Clear any navigation state
+      if (window.Ecwid && window.Ecwid.clearHistory) {
+        window.Ecwid.clearHistory();
+      }
+    } catch (error) {
+      // Ignore errors during close cleanup
+    }
+    
+    // Call the parent close handler
+    onClose();
+  };
+
   useEffect(() => {
     let isMounted = true;
     let initializationTimeout = null;
@@ -189,15 +209,52 @@ export default function EcwidMerchModal({ onClose }) {
         storeObserver.disconnect();
       }
 
-      // More thorough cleanup
+      // More thorough cleanup - especially important when closing from product detail pages
       try {
+        // Force Ecwid to navigate back to category view before cleanup
+        if (window.Ecwid && window.Ecwid.openPage) {
+          try {
+            window.Ecwid.openPage('category', {categoryId: 172237020});
+          } catch (error) {
+            // Ignore navigation errors during cleanup
+          }
+        }
+
+        // Clear store content
         if (storeRef.current) {
           storeRef.current.innerHTML = '';
         }
 
-        // Try to destroy Ecwid instance if possible
-        if (window.Ecwid && window.Ecwid.destroy) {
-          window.Ecwid.destroy();
+        // Reset Ecwid internal state more aggressively
+        if (window.Ecwid) {
+          try {
+            // Clear navigation history if available
+            if (window.Ecwid.clearHistory) {
+              window.Ecwid.clearHistory();
+            }
+            
+            // Reset any internal state
+            if (window.Ecwid.reset) {
+              window.Ecwid.reset();
+            }
+            
+            // Destroy instance
+            if (window.Ecwid.destroy) {
+              window.Ecwid.destroy();
+            }
+          } catch (error) {
+            // Ignore Ecwid cleanup errors
+          }
+        }
+
+        // Clear any global Ecwid state variables
+        if (window.ec) {
+          try {
+            window.ec.storefront = null;
+            window.ec.store = null;
+          } catch (error) {
+            // Ignore cleanup errors
+          }
         }
       } catch (error) {
         // Ignore cleanup errors
@@ -208,7 +265,7 @@ export default function EcwidMerchModal({ onClose }) {
   return (
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-auto bg-black bg-opacity-10"
-      onClick={onClose}
+      onClick={handleClose}
     >
       <div 
         className="w-full max-w-4xl pointer-events-auto bg-white flex flex-col max-h-[80vh]"
@@ -218,7 +275,7 @@ export default function EcwidMerchModal({ onClose }) {
         <div className="p-4 sm:p-6 border-b">
           <div className="flex justify-end items-center">
             <button 
-              onClick={onClose}
+              onClick={handleClose}
               className="text-gray-600 hover:text-gray-900 transition-colors text-xl"
             >
               X

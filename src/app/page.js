@@ -51,6 +51,7 @@ export default function Home() {
   const [activeModal, setActiveModal] = useState(null);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const [colors, setColors] = useState(null);
+  const [merchModalKey, setMerchModalKey] = useState(0);
 
   useEffect(() => {
     setColors(generateColors());
@@ -143,12 +144,24 @@ export default function Home() {
   const handleModalOpen = (modalType) => {
     setActiveModal(modalType);
     trackModalOpen(modalType);
+    
+    // Set page title when opening merch modal
+    if (modalType === 'merch') {
+      document.title = 'QS1 Merch Store - QS1 Berlin';
+    }
   };
 
   const handleModalClose = () => {
     if (activeModal) {
       trackModalClose(activeModal);
     }
+    
+    // Reset page title and prepare for fresh modal when closing merch modal
+    if (activeModal === 'merch') {
+      document.title = 'QS1 Berlin - Event & Booking Agency';
+      setMerchModalKey(prev => prev + 1); // Prepare fresh modal for next open
+    }
+    
     setActiveModal(null);
     if (activeModal === 'artist') {
       window.location.hash = '';
@@ -400,7 +413,7 @@ export default function Home() {
         )}
 
         {activeModal === 'merch' && (
-          <EcwidMerchModal onClose={handleModalClose} />
+          <EcwidMerchModal key={merchModalKey} onClose={handleModalClose} />
         )}
       </div>
     </>
