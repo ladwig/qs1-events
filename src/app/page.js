@@ -58,6 +58,108 @@ export default function Home() {
     
     // Track referrer on initial page load
     trackReferrer();
+
+    // Add structured data to the page
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://qs1.berlin/#organization",
+          "name": "QS1 Berlin",
+          "alternateName": "QS1",
+          "url": "https://qs1.berlin",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://qs1.berlin/logo.svg",
+            "width": 400,
+            "height": 400
+          },
+          "description": "QS1 Berlin is an event and booking agency specializing in music, culture, and creative events in Berlin, Germany.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Berlin",
+            "addressCountry": "Germany"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "booking",
+            "email": "bookings@qs1.berlin"
+          },
+          "foundingDate": "2018",
+          "industry": "Entertainment",
+          "serviceArea": {
+            "@type": "Place",
+            "name": "Berlin, Germany"
+          },
+          "services": [
+            "Artist Booking",
+            "Event Management", 
+            "DJ Services",
+            "Music Event Planning",
+            "Talent Management"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://qs1.berlin/#website",
+          "url": "https://qs1.berlin",
+          "name": "QS1 Berlin",
+          "description": "QS1 Berlin - Event & Booking Agency specializing in electronic music artists and events",
+          "publisher": {
+            "@id": "https://qs1.berlin/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://qs1.berlin/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://qs1.berlin/#artists",
+          "name": "QS1 Berlin Artists",
+          "description": "Electronic music artists represented by QS1 Berlin booking agency",
+          "numberOfItems": sortedArtists.length,
+          "itemListElement": sortedArtists.map((artist, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+              "@type": "Person",
+              "@id": `https://qs1.berlin/artist/${artist.name.toLowerCase().replace(/\s+/g, '-')}`,
+              "name": artist.name,
+              "jobTitle": "DJ",
+              "description": artist.description.split('\n')[0], // First paragraph only
+              "image": `https://qs1.berlin${artist.imageUrl}`,
+              "url": `https://qs1.berlin/artist/${artist.name.toLowerCase().replace(/\s+/g, '-')}`,
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": artist.basedIn.split(',')[0],
+                "addressCountry": artist.basedIn.split(',')[1]?.trim()
+              },
+              "genre": artist.genre,
+              "memberOf": {
+                "@id": "https://qs1.berlin/#organization"
+              }
+            }
+          }))
+        }
+      ]
+    };
+
+    // Add structured data script to head
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    // Cleanup function to remove script on unmount
+    return () => {
+      const existingScript = document.querySelector('script[type="application/ld+json"]');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
   }, []);
 
   // Handle video autoplay for iOS
@@ -96,6 +198,15 @@ export default function Home() {
       document.head.appendChild(statusBarMeta);
     }
     statusBarMeta.content = 'light-content';
+
+    // Add canonical URL
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.href = 'https://qs1.berlin/';
   }, [colors]);
 
   // Handle scroll to show/hide scroll-to-top button
@@ -149,6 +260,31 @@ export default function Home() {
     if (modalType === 'merch') {
       document.title = 'QS1 Merch Store - QS1 Berlin';
     }
+    
+    // SEO optimization for artist modals
+    if (modalType === 'artist' && selectedArtist) {
+      // Update page title for artist
+      document.title = `${selectedArtist.name} - ${selectedArtist.genre.join(', ')} DJ | QS1 Berlin`;
+      
+      // Update meta description for artist
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.name = 'description';
+        document.head.appendChild(metaDescription);
+      }
+      const artistDesc = selectedArtist.description.split('\n')[0].substring(0, 155) + '...';
+      metaDescription.content = `${selectedArtist.name} - ${artistDesc} Book ${selectedArtist.name} with QS1 Berlin.`;
+      
+      // Update canonical URL for artist
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (!canonicalLink) {
+        canonicalLink = document.createElement('link');
+        canonicalLink.rel = 'canonical';
+        document.head.appendChild(canonicalLink);
+      }
+      canonicalLink.href = `https://qs1.berlin/artist/${selectedArtist.name.toLowerCase().replace(/\s+/g, '-')}`;
+    }
   };
 
   const handleModalClose = () => {
@@ -160,6 +296,24 @@ export default function Home() {
     if (activeModal === 'merch') {
       document.title = 'QS1 Berlin - Event & Booking Agency';
       setMerchModalKey(prev => prev + 1); // Prepare fresh modal for next open
+    }
+    
+    // Reset SEO meta tags when closing artist modal
+    if (activeModal === 'artist') {
+      // Reset page title
+      document.title = 'QS1 Berlin - Event & Booking Agency';
+      
+      // Reset meta description
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.content = 'QS1 Berlin is an event and booking agency specializing in music, culture, and creative events. Discover our artists, book talent, and explore upcoming events.';
+      }
+      
+      // Reset canonical URL
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (canonicalLink) {
+        canonicalLink.href = 'https://qs1.berlin/';
+      }
     }
     
     setActiveModal(null);
@@ -217,7 +371,7 @@ export default function Home() {
       <CustomCursor />
       <div className="snap-container">
         {/* First Section - Video Background Hero */}
-        <section className="snap-section mobile-section flex flex-col justify-between p-3 sm:p-8 relative overflow-hidden">
+        <section className="snap-section mobile-section flex flex-col justify-between p-3 sm:p-8 relative overflow-hidden" aria-label="QS1 Berlin Homepage Hero">
           {/* Video Background */}
           <video
             id="bg-video"
@@ -225,8 +379,9 @@ export default function Home() {
             muted
             loop
             playsInline
-            className="absolute inset-0 w-full h-full object-cover z-0"
+            className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
             preload="auto"
+            aria-hidden="true"
           >
             <source src="/bg.mp4" type="video/mp4" />
           </video>
@@ -234,7 +389,7 @@ export default function Home() {
           {/* Content Wrapper */}
           <div className="relative z-20 flex flex-col justify-between h-full w-full">
           {/* Top Navigation */}
-          <nav className="w-full flex justify-between items-center fade-in flex-shrink-0">
+          <nav className="w-full flex justify-between items-center fade-in flex-shrink-0" role="navigation" aria-label="Main navigation">
             <div className="w-1/3">
               <span 
                 className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight bg-white"
@@ -246,6 +401,10 @@ export default function Home() {
               <span 
                 className="text-xs sm:text-sm cursor-pointer px-2 py-1 text-gray-800 leading-tight bg-white inline-block"
                 onClick={() => handleModalOpen('qs1')}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && handleModalOpen('qs1')}
+                aria-label="Learn more about QS1 Berlin"
               >
                 QS1 BERLIN
               </span>
@@ -281,7 +440,7 @@ export default function Home() {
               <div className="relative w-24 h-24 sm:w-48 sm:h-48">
                 <Image
                   src="/logo.svg"
-                  alt="Logo"
+                  alt="QS1 Berlin Logo - Event & Booking Agency"
                   fill
                   className="invert"
                   style={{ objectFit: 'contain' }}
@@ -339,30 +498,36 @@ export default function Home() {
         </section>
 
         {/* Second Section - White Gallery */}
-        <section id="artists" className="snap-section min-h-screen bg-white py-16 px-8">
+        <section id="artists" className="snap-section min-h-screen bg-white py-16 px-8" aria-labelledby="artists-heading">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 fade-in">
+            <h1 id="artists-heading" className="sr-only">QS1 Berlin Artists</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 fade-in" role="grid" aria-label="Artist portfolio grid">
               {sortedArtists.map((artist, index) => (
-                <div 
+                <article 
                   key={index}
                   className="cursor-pointer group"
                   onClick={() => handleArtistClick(artist)}
+                  role="gridcell"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && handleArtistClick(artist)}
+                  aria-label={`View ${artist.name} profile - ${artist.genre.join(', ')} DJ from ${artist.basedIn}`}
                 >
                   <div className="relative aspect-square w-full overflow-hidden bg-gray-100">
                     {artist.imageUrl && (
                       <Image
                         src={artist.imageUrl}
-                        alt={`${artist.name} profile`}
+                        alt={`${artist.name} - ${artist.genre.join(', ')} DJ from ${artist.basedIn} - QS1 Berlin Artist`}
                         fill
                         className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
                         priority={index < 4}
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       />
                     )}
                   </div>
-                  <h3 className="mt-4 text-center text-gray-800 group-hover:text-black">
+                  <h2 className="mt-4 text-center text-gray-800 group-hover:text-black">
                     {artist.name}
-                  </h3>
-                </div>
+                  </h2>
+                </article>
               ))}
             </div>
           </div>

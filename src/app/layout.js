@@ -21,12 +21,27 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "QS1 Berlin - Event & Booking Agency",
   description: "QS1 Berlin is an event and booking agency specializing in music, culture, and creative events. Discover our artists, book talent, and explore upcoming events.",
-  keywords: "QS1 Berlin, event agency, techno, dj, booking agency, Berlin events, music agency, artist booking, creative events, Berlin artists",
+  keywords: "QS1 Berlin, event agency, techno, dj, booking agency, Berlin events, music agency, artist booking, creative events, Berlin artists, techno booking, house music, electronic music Berlin, DJ booking Germany",
+  authors: [{ name: "QS1 Berlin" }],
+  creator: "QS1 Berlin",
+  publisher: "QS1 Berlin",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
     apple: '/favicon.ico',
   },
+  manifest: '/manifest.json',
   openGraph: {
     title: "QS1 Berlin - Event & Booking Agency",
     description: "QS1 Berlin is an event and booking agency specializing in music, culture, and creative events. Discover our artists, book talent, and explore upcoming events.",
@@ -34,12 +49,44 @@ export const metadata = {
     siteName: "QS1 Berlin",
     type: "website",
     locale: "en_US",
+    alternateLocale: ["de_DE"],
+    images: [
+      {
+        url: "https://qs1.berlin/logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "QS1 Berlin - Event & Booking Agency Logo",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "QS1 Berlin - Event & Booking Agency",
+    description: "QS1 Berlin is an event and booking agency specializing in music, culture, and creative events. Discover our artists, book talent, and explore upcoming events.",
+    images: ["https://qs1.berlin/logo.svg"],
+    creator: "@qs1berlin",
+    site: "@qs1berlin",
+  },
+  verification: {
+    // Add when you get these verification codes
+    // google: 'your-google-verification-code',
+    // yandex: 'your-yandex-verification-code',
+    // yahoo: 'your-yahoo-verification-code',
+  },
+  category: 'entertainment',
+  classification: 'Event Agency, Music Booking, Artist Management',
   appleWebApp: {
     statusBarStyle: 'light-content',
+    title: 'QS1 Berlin',
+    capable: true,
+  },
+  formatDetection: {
+    telephone: false,
   },
   other: {
     'apple-mobile-web-app-status-bar-style': 'light-content',
+    'msapplication-TileColor': '#000000',
+    'theme-color': '#ED750F',
   }
 };
 

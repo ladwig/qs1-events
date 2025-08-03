@@ -1,0 +1,27 @@
+{
+  "name": "QS1 Berlin - Event & Booking Agency",
+  "short_name": "QS1 Berlin",
+  "description": "QS1 Berlin is an event and booking agency specializing in music, culture, and creative events",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ED750F",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["entertainment", "music", "events"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+} 

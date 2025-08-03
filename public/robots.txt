@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://qs1.berlin/sitemap.xml
+
+# Optional: Block any admin or private areas if they exist
+# Disallow: /admin/
+# Disallow: /_next/
+# Disallow: /api/
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Crawl-delay for less aggressive crawling (optional)
+Crawl-delay: 1 
