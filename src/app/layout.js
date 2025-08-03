@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import PostHogProvider from "./components/PostHogProvider";
 import LocalizedCookieBanner from "./components/LocalizedCookieBanner";
+import StatusBar from "./components/StatusBar";
 import { 
   ConsentManagerDialog,
   ConsentManagerProvider,
@@ -93,6 +94,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <StatusBar 
+          message="QS1 7 Year Anniversary at Kreuzwerk, Berlin - Sa., 9. Aug. 2025"
+          link="https://de.ra.co/events/2136761"
+          linkText="Get Tickets"
+          isVisible={true}
+          isDismissible={true}
+          backgroundColor="bg-gray-900"
+          textColor="text-white"
+        />
         <ConsentManagerProvider
           options={{
             mode: 'offline',
