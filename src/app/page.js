@@ -8,7 +8,7 @@ import Imprint from "./components/Imprint";
 import QS1Info from "./components/QS1Info";
 import CustomCursor from "./components/CustomCursor";
 import SoundCloudModal from "./components/SoundCloudModal";
-import MerchModal from "./components/MerchModal";
+import EcwidMerchModal from "./components/EcwidMerchModal";
 import { trackEvent, trackModalOpen, trackModalClose, trackReferrer, trackButtonClick } from "./utils/analytics";
 
 function generateColors() {
@@ -400,7 +400,7 @@ export default function Home() {
         )}
 
         {activeModal === 'merch' && (
-          <MerchModal onClose={handleModalClose} />
+          <EcwidMerchModal onClose={handleModalClose} />
         )}
       </div>
     </>
