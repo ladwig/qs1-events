@@ -1,0 +1,43 @@
+# QS1 Berlin
+
+> QS1 Berlin is an event and booking agency specializing in electronic music artists and events in Berlin, Germany. We represent a curated roster of DJs and producers across techno, house, and electronic music genres, providing booking services, event management, and artist development.
+
+QS1 Berlin operates as a boutique agency focusing on underground electronic music culture. Our artists are primarily Berlin-based DJs and producers who perform at clubs, festivals, and events worldwide. The agency was founded in 2018 and has established itself in Berlin's vibrant electronic music scene.
+
+## Artists
+
+- [Artist Roster](https://qs1.berlin/#artists): Complete list of all represented artists with individual profiles
+- [súz](https://qs1.berlin/artist/suz): Berlin-based DJ specializing in fun, sexy energy with percussive techno and house
+- [Freigeist](https://qs1.berlin/artist/freigeist): Vinyl-only DJ and label founder of 'Lengua Materna', focusing on 90s/2000s house and techno
+- [Josh Reid](https://qs1.berlin/artist/josh-reid): Dublin-born, Berlin-based DJ with 10+ years experience in punchy, fast-paced techno
+- [Kedi Bounce](https://qs1.berlin/artist/kedi-bounce): House music trio featuring critical P, Jean-Jez, and Mesmer with eclectic house sounds
+- [DJ NORTHERN](https://qs1.berlin/artist/dj-northern): Queer vinyl DJ from Yorkshire, co-founder of FLINTA collective and Garage Girls Berlin
+- [TheLoopmasters](https://qs1.berlin/artist/theloopmasters): Collaborative project from DJ Frequency & DJ Speed with stripped-back, loopy techno
+- [DJ Speed](https://qs1.berlin/artist/dj-speed): Co-founder of Loopmaster Records, one half of TheLoopmasters, known for looping techno
+- [DJ Frequency](https://qs1.berlin/artist/dj-frequency): Irish-born, Berlin-based DJ with slick sets and esteemed productions
+- [Npoint_O](https://qs1.berlin/artist/npoint-o): QS1 Berlin collective founder, pushing underground Berlin scene with journey-focused sets
+- [Sparkling Water Dreams](https://qs1.berlin/artist/sparkling-water-dreams): Irish DJ/producer with deep, groovy house sound and acid house influences
+- [T-RAIL](https://qs1.berlin/artist/t-rail): Dublin-born, Berlin-based DJ with eclectic pumping sounds and QS1 residency
+
+## Services
+
+- [Booking Information](https://qs1.berlin/): Contact details and booking process for artists
+- [Event Management](https://qs1.berlin/): Full event planning and production services
+- [Artist Development](https://qs1.berlin/): Artist management and career development support
+
+## Contact & Business
+
+- [Contact Email](mailto:bookings@qs1.berlin): Primary booking and business inquiries
+- [Imprint](https://qs1.berlin/): Legal information and company details
+- [Press Kit](https://qs1.berlin/presskit): Media resources and press materials
+
+## Music & Content
+
+- [SoundCloud](https://qs1.berlin/): Artist music and mixes available for listening
+- [Merch Store](https://qs1.berlin/): Official QS1 Berlin merchandise and artist products
+
+## Optional
+
+- [Resident Advisor Profiles](https://ra.co/): External artist profiles and event listings
+- [Instagram](https://instagram.com/): Social media updates and behind-the-scenes content
+- [Event Calendar](https://de.ra.co/events/2136761): Upcoming QS1 events and performances 
