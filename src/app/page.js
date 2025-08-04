@@ -437,7 +437,7 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full sm:w-1/3 flex justify-center items-center fade-in mb-0 sm:mb-0 mt-12 sm:mt-0">
-              <div className="relative w-24 h-24 sm:w-48 sm:h-48">
+              <div className="relative w-24 h-24 sm:w-36 sm:h-36">
                 <Image
                   src="/logo.svg"
                   alt="QS1 Berlin Logo - Event & Booking Agency"
