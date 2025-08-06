@@ -73,7 +73,7 @@ export const artists = [
     basedIn: 'Berlin, DE',
     artistType: 'Resident',
     genre: ['GARAGE','HOUSE'],
-    hide: false,
+    hide: true,
     hideRequestButton: true,
     description: "Female identifying, Queer, Vinyl DJ from Yorkshire and now based in Berlin.\nWith a varied taste in music, DJ NORTHERN plays a selection of dancefloor bangers, ranging from Garage, House, Techno, Breaks and Drum and Bass. DJ NORTHERN has played for the likes of Rinse FM, Buttons, Refuge Worldwide, and HÖR Berlin.\n\nDJ NORTHERN has a passion for queer parties and community and is a co-founder of FLINTA collective and party series, Garage Girls Berlin.",
     imageUrl: '/artists/dj-northern/dj-northern-1.webp',
