@@ -10,10 +10,10 @@ function PostHogPageTracker() {
   const { consent } = useConsentManager();
 
   useEffect(() => {
-    // Only track pageviews if analytics consent is given and PostHog is initialized
+    // Temporarily track pageviews without consent (cookie banner disabled)
+    // Original condition: consent?.analytics && 
     if (typeof window !== 'undefined' && 
         process.env.NODE_ENV === 'production' && 
-        consent?.analytics && 
         posthog.__loaded) {
       let url = window.origin + pathname;
       if (searchParams.toString()) {
@@ -24,7 +24,7 @@ function PostHogPageTracker() {
         $current_url: url
       });
     }
-  }, [pathname, searchParams, consent?.analytics]);
+  }, [pathname, searchParams]); // Removed consent dependency
 
   return null;
 }

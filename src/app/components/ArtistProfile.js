@@ -100,21 +100,26 @@ export default function ArtistProfile({ artist, onClose, colors }) {
               artist.description && artist.description.length > 300 ? 'mt-4 sm:mt-8' : 'mt-4 sm:mt-6'
             }`}>
               {!artist.hideRequestButton && (
-                <a 
-                  href={`mailto:bookings@qs1.berlin?subject=Booking Request ${artist.name}`}
-                  onClick={handleBookingRequest}
-                  className="font-mono py-2 sm:py-3 px-6 sm:px-8 text-gray-800 hover:text-white border border-gray-800 transition-all duration-200 whitespace-nowrap w-full sm:w-auto text-center flex-shrink-0 order-first sm:order-last"
-                  onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = '#000000';
-                    e.target.style.borderColor = '#000000';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = 'transparent';
-                    e.target.style.borderColor = '#1f2937'; // gray-800
-                  }}
-                >
-                  REQUEST
-                </a>
+                <div className="w-full sm:w-auto flex-shrink-0 order-first sm:order-last">
+                  <a 
+                    href={`mailto:bookings@qs1.berlin?subject=Booking Request ${artist.name}`}
+                    onClick={handleBookingRequest}
+                    className="font-mono py-2 sm:py-3 px-6 sm:px-8 text-gray-800 hover:text-white border border-gray-800 transition-all duration-200 whitespace-nowrap w-full sm:w-auto text-center block"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = '#000000';
+                      e.target.style.borderColor = '#000000';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = 'transparent';
+                      e.target.style.borderColor = '#1f2937'; // gray-800
+                    }}
+                  >
+                    REQUEST
+                  </a>
+                  <div className="font-mono text-xs text-gray-600 text-center mt-2 px-6 sm:px-8">
+                    bookings@qs1.berlin
+                  </div>
+                </div>
               )}
               <div className={`text-gray-800 leading-relaxed text-sm sm:text-base whitespace-pre-line pb-4 order-last sm:order-first ${
                 artist.description && artist.description.length <= 300 && !artist.hideRequestButton ? 'sm:max-w-[70%]' : ''
