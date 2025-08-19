@@ -33,10 +33,10 @@ export default function PostHogProvider({ children }) {
   const { consent } = useConsentManager();
 
   useEffect(() => {
-    // Only initialize PostHog in production and when analytics consent is given
+    // Temporarily always initialize PostHog in production (cookie banner disabled)
+    // Original condition: consent?.analytics
     if (typeof window !== 'undefined' && 
-        process.env.NODE_ENV === 'production' && 
-        consent?.analytics) {
+        process.env.NODE_ENV === 'production') {
       
       // Initialize PostHog only if not already initialized
       if (!posthog.__loaded) {
@@ -58,18 +58,19 @@ export default function PostHogProvider({ children }) {
           }
         });
       }
-    } else if (typeof window !== 'undefined' && !consent?.analytics && posthog.__loaded) {
-      // If consent is withdrawn, opt out of tracking
-      posthog.opt_out_capturing();
-    }
-  }, [consent?.analytics]);
+    } 
+    // Temporarily disabled consent checking
+    // else if (typeof window !== 'undefined' && !consent?.analytics && posthog.__loaded) {
+    //   posthog.opt_out_capturing();
+    // }
+  }, []); // Removed consent dependency
 
-  // Re-enable tracking if consent is given after being withdrawn
-  useEffect(() => {
-    if (typeof window !== 'undefined' && consent?.analytics && posthog.__loaded) {
-      posthog.opt_in_capturing();
-    }
-  }, [consent?.analytics]);
+  // Temporarily disabled consent re-enabling
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined' && consent?.analytics && posthog.__loaded) {
+  //     posthog.opt_in_capturing();
+  //   }
+  // }, [consent?.analytics]);
 
   return (
     <>

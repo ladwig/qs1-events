@@ -157,8 +157,9 @@ export default function RootLayout({ children }) {
             ignoreGeoLocation: false, // Respect geo-location for EU law compliance
           }}
         >
-          <LocalizedCookieBanner theme={consentTheme} />
-          <ConsentManagerDialog theme={consentTheme} />
+          {/* Temporarily disabled cookie banner - easy to reactivate by uncommenting below */}
+          {/* <LocalizedCookieBanner theme={consentTheme} /> */}
+          {/* <ConsentManagerDialog theme={consentTheme} /> */}
           <PostHogProvider>
             {children}
           </PostHogProvider>
