@@ -3,6 +3,7 @@ import "./globals.css";
 import PostHogProvider from "./components/PostHogProvider";
 import LocalizedCookieBanner from "./components/LocalizedCookieBanner";
 import StatusBar from "./components/StatusBar";
+import { Analytics } from "@vercel/analytics/next";
 import { 
   ConsentManagerDialog,
   ConsentManagerProvider,
@@ -164,6 +165,7 @@ export default function RootLayout({ children }) {
             {children}
           </PostHogProvider>
         </ConsentManagerProvider>
+        <Analytics />
       </body>
     </html>
   );
