@@ -145,7 +145,7 @@ export default function RootLayout({ children }) {
           message="QS1 7 Year Anniversary at Kreuzwerk, Berlin - Sa., 9. Aug. 2025"
           link="https://de.ra.co/events/2136761"
           linkText="Get Tickets"
-          isVisible={true}
+          isVisible={false}
           isDismissible={true}
           backgroundColor="bg-black"
           textColor="text-white"
