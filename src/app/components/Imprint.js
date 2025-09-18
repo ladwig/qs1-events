@@ -62,12 +62,12 @@ export default function Imprint({ onClose }) {
                 <span className="text-red-500 animate-pulse group-hover:animate-bounce transition-all duration-300 text-sm">❤️</span>
                 <span className="text-xs font-mono text-gray-600">by</span>
                 <a 
-                  href="https://github.com/ladwig" 
+                  href="https://www.giwdal.com" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-xs font-mono text-gray-800 hover:text-black transition-colors font-medium"
                 >
-                  github.com/ladwig
+                  Daniel Ladwig
                 </a>
               </div>
             </div>

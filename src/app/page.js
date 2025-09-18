@@ -9,6 +9,7 @@ import QS1Info from "./components/QS1Info";
 import CustomCursor from "./components/CustomCursor";
 import SoundCloudModal from "./components/SoundCloudModal";
 import EcwidMerchModal from "./components/EcwidMerchModal";
+import SilkBackground from "./components/SilkBackground";
 import { trackEvent, trackModalOpen, trackModalClose, trackReferrer, trackButtonClick } from "./utils/analytics";
 
 function generateColors() {
@@ -370,21 +371,10 @@ export default function Home() {
     <>
       <CustomCursor />
       <div className="snap-container">
-        {/* First Section - Video Background Hero */}
+        {/* First Section - Silk Background Hero */}
         <section className="snap-section mobile-section flex flex-col justify-between p-3 sm:p-8 relative overflow-hidden" aria-label="QS1 Berlin Homepage Hero">
-          {/* Video Background */}
-          <video
-            id="bg-video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
-            preload="auto"
-            aria-hidden="true"
-          >
-            <source src="/bg.mp4" type="video/mp4" />
-          </video>
+          {/* Silk Background */}
+          <SilkBackground />
 
           {/* Content Wrapper */}
           <div className="relative z-20 flex flex-col justify-between h-full w-full">

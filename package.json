@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@c15t/nextjs": "^1.4.4",
+    "@react-three/fiber": "^9.3.0",
     "@vercel/analytics": "^1.5.0",
     "next": "15.1.7",
     "ogl": "^1.0.11",
     "posthog-js": "^1.258.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
