@@ -56,7 +56,7 @@ export default function Home() {
 
   useEffect(() => {
     setColors(generateColors());
-    
+
     // Track referrer on initial page load
     trackReferrer();
 
@@ -95,7 +95,7 @@ export default function Home() {
           },
           "services": [
             "Artist Booking",
-            "Event Management", 
+            "Event Management",
             "DJ Services",
             "Music Event Planning",
             "Talent Management"
@@ -181,7 +181,7 @@ export default function Home() {
   // Update theme color and status bar color dynamically
   useEffect(() => {
     if (!colors) return;
-    
+
     // Update theme color meta tag - use specific orange for iOS
     let themeColorMeta = document.querySelector('meta[name="theme-color"]');
     if (!themeColorMeta) {
@@ -256,17 +256,17 @@ export default function Home() {
   const handleModalOpen = (modalType) => {
     setActiveModal(modalType);
     trackModalOpen(modalType);
-    
+
     // Set page title when opening merch modal
     if (modalType === 'merch') {
       document.title = 'QS1 Merch Store - QS1 Berlin';
     }
-    
+
     // SEO optimization for artist modals
     if (modalType === 'artist' && selectedArtist) {
       // Update page title for artist
       document.title = `${selectedArtist.name} - ${selectedArtist.genre.join(', ')} DJ | QS1 Berlin`;
-      
+
       // Update meta description for artist
       let metaDescription = document.querySelector('meta[name="description"]');
       if (!metaDescription) {
@@ -276,7 +276,7 @@ export default function Home() {
       }
       const artistDesc = selectedArtist.description.split('\n')[0].substring(0, 155) + '...';
       metaDescription.content = `${selectedArtist.name} - ${artistDesc} Book ${selectedArtist.name} with QS1 Berlin.`;
-      
+
       // Update canonical URL for artist
       let canonicalLink = document.querySelector('link[rel="canonical"]');
       if (!canonicalLink) {
@@ -292,31 +292,31 @@ export default function Home() {
     if (activeModal) {
       trackModalClose(activeModal);
     }
-    
+
     // Reset page title and prepare for fresh modal when closing merch modal
     if (activeModal === 'merch') {
       document.title = 'QS1 Berlin - Event & Booking Agency';
       setMerchModalKey(prev => prev + 1); // Prepare fresh modal for next open
     }
-    
+
     // Reset SEO meta tags when closing artist modal
     if (activeModal === 'artist') {
       // Reset page title
       document.title = 'QS1 Berlin - Event & Booking Agency';
-      
+
       // Reset meta description
       let metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
         metaDescription.content = 'QS1 Berlin is an event and booking agency specializing in music, culture, and creative events. Discover our artists, book talent, and explore upcoming events.';
       }
-      
+
       // Reset canonical URL
       let canonicalLink = document.querySelector('link[rel="canonical"]');
       if (canonicalLink) {
         canonicalLink.href = 'https://qs1.berlin/';
       }
     }
-    
+
     setActiveModal(null);
     if (activeModal === 'artist') {
       window.location.hash = '';
@@ -332,7 +332,7 @@ export default function Home() {
       setSelectedArtist(artist);
       handleModalOpen('artist');
       window.location.hash = artist.name.toLowerCase().replace(/\s+/g, '-');
-      
+
       // Track artist selection from main page
       trackEvent('artist_selected_from_grid', {
         artist_name: artist.name,
@@ -378,112 +378,112 @@ export default function Home() {
 
           {/* Content Wrapper */}
           <div className="relative z-20 flex flex-col justify-between h-full w-full">
-          {/* Top Navigation */}
-          <nav className="w-full flex justify-between items-center fade-in flex-shrink-0" role="navigation" aria-label="Main navigation">
-            <div className="w-1/3">
-              <span 
-                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight bg-white"
-              >
-                BOOKING & EVENT MANAGEMENT
-              </span>
-            </div>
-            <div className="w-1/3 text-center">
-              <span 
-                className="text-xs sm:text-sm cursor-pointer px-2 py-1 text-gray-800 leading-tight bg-white inline-block"
-                onClick={() => handleModalOpen('qs1')}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && handleModalOpen('qs1')}
-                aria-label="Learn more about QS1 Berlin"
-              >
-                QS1 BERLIN
-              </span>
-            </div>
-            <div className="w-1/3 text-right">
-              <span 
-                className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight bg-white"
-              >
-                ©2025
-              </span>
-            </div>
-          </nav>
+            {/* Top Navigation */}
+            <nav className="w-full flex justify-between items-center fade-in flex-shrink-0" role="navigation" aria-label="Main navigation">
+              <div className="w-1/3">
+                <span
+                  className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight bg-white"
+                >
+                  BOOKING & EVENT MANAGEMENT
+                </span>
+              </div>
+              <div className="w-1/3 text-center">
+                <span
+                  className="text-xs sm:text-sm cursor-pointer px-2 py-1 text-gray-800 leading-tight bg-white inline-block"
+                  onClick={() => handleModalOpen('qs1')}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && handleModalOpen('qs1')}
+                  aria-label="Learn more about QS1 Berlin"
+                >
+                  QS1 BERLIN
+                </span>
+              </div>
+              <div className="w-1/3 text-right">
+                <span
+                  className="hidden md:inline-block text-xs sm:text-sm px-2 py-1 text-gray-800 leading-tight bg-white"
+                >
+                  ©{new Date().getFullYear()}
+                </span>
+              </div>
+            </nav>
 
-          {/* Center Content */}
-          <div className="flex flex-col sm:flex-row justify-between items-center flex-1 w-full gap-2 sm:gap-0 min-h-0">
-            <div className="w-full sm:w-1/3 flex justify-center sm:justify-start mb-2 sm:mb-0 mt-2 sm:mt-0">
-              <div className="flex flex-row sm:flex-col gap-6 sm:gap-4 items-center sm:items-start w-full justify-center sm:justify-start">
-                <span 
-                  className="text-xs sm:text-sm cursor-pointer whitespace-nowrap px-2 py-1 text-gray-800 leading-tight bg-white"
-                  onClick={() => handleModalOpen('soundcloud')}
-                >
-                  LISTEN
-                </span>
-                <span 
-                  className="text-xs sm:text-sm cursor-pointer whitespace-nowrap px-2 py-1 text-gray-800 leading-tight bg-white"
-                  onClick={() => handleModalOpen('merch')}
-                >
-                  MERCH
-                </span>
-              </div>
-            </div>
-            <div className="w-full sm:w-1/3 flex justify-center items-center fade-in mb-0 sm:mb-0 mt-12 sm:mt-0">
-              <div className="relative w-24 h-24 sm:w-36 sm:h-36">
-                <Image
-                  src="/logo.svg"
-                  alt="QS1 Berlin Logo - Event & Booking Agency"
-                  fill
-                  className="invert"
-                  style={{ objectFit: 'contain' }}
-                  priority
-                />
-              </div>
-            </div>
-            <div className="w-full sm:w-1/3 flex justify-center sm:justify-end flex-1 overflow-hidden">
-              {/* Mobile: vertical list, Desktop: column */}
-              <ul className="artist-list text-center sm:text-right flex flex-col gap-3 sm:gap-3 fade-in-delay w-full sm:w-auto justify-center sm:justify-end overflow-y-auto max-h-full pt-2 pb-2">
-                {sortedArtists.map((artist, index) => (
-                  <li 
-                    key={index} 
-                    className="hover:cursor-pointer relative flex-shrink-0"
-                    onClick={() => handleArtistClick(artist)}
+            {/* Center Content */}
+            <div className="flex flex-col sm:flex-row justify-between items-center flex-1 w-full gap-2 sm:gap-0 min-h-0">
+              <div className="w-full sm:w-1/3 flex justify-center sm:justify-start mb-2 sm:mb-0 mt-2 sm:mt-0">
+                <div className="flex flex-row sm:flex-col gap-6 sm:gap-4 items-center sm:items-start w-full justify-center sm:justify-start">
+                  <span
+                    className="text-xs sm:text-sm cursor-pointer whitespace-nowrap px-2 py-1 text-gray-800 leading-tight bg-white"
+                    onClick={() => handleModalOpen('soundcloud')}
                   >
-                    <span className="px-2 py-1 text-gray-800 bg-white text-xs sm:text-sm leading-tight">{artist.name}</span>
-                  </li>
-                ))}
-              </ul>
+                    LISTEN
+                  </span>
+                  <span
+                    className="text-xs sm:text-sm cursor-pointer whitespace-nowrap px-2 py-1 text-gray-800 leading-tight bg-white"
+                    onClick={() => handleModalOpen('merch')}
+                  >
+                    MERCH
+                  </span>
+                </div>
+              </div>
+              <div className="w-full sm:w-1/3 flex justify-center items-center fade-in mb-0 sm:mb-0 mt-12 sm:mt-0">
+                <div className="relative w-24 h-24 sm:w-36 sm:h-36">
+                  <Image
+                    src="/logo.svg"
+                    alt="QS1 Berlin Logo - Event & Booking Agency"
+                    fill
+                    className="invert"
+                    style={{ objectFit: 'contain' }}
+                    priority
+                  />
+                </div>
+              </div>
+              <div className="w-full sm:w-1/3 flex justify-center sm:justify-end flex-1 overflow-hidden">
+                {/* Mobile: vertical list, Desktop: column */}
+                <ul className="artist-list text-center sm:text-right flex flex-col gap-3 sm:gap-3 fade-in-delay w-full sm:w-auto justify-center sm:justify-end overflow-y-auto max-h-full pt-2 pb-2">
+                  {sortedArtists.map((artist, index) => (
+                    <li
+                      key={index}
+                      className="hover:cursor-pointer relative flex-shrink-0"
+                      onClick={() => handleArtistClick(artist)}
+                    >
+                      <span className="px-2 py-1 text-gray-800 bg-white text-xs sm:text-sm leading-tight">{artist.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
 
-          {/* Bottom Footer */}
-          <footer className="w-full flex justify-between items-center fade-in flex-shrink-0 pb-safe-extra">
-            <div className="w-1/3">
-              <a 
-                href="mailto:bookings@qs1.berlin"
-                onClick={handleContactClick}
-                className="cursor-pointer px-2 py-1 text-gray-800 leading-tight bg-white text-xs sm:text-sm"
-              >
-                CONTACT
-              </a>
-            </div>
-            <div className="w-1/3 text-center">
-              {/* Center footer content */}
-            </div>
-            <div className="w-1/3 text-right">
-              {/* <a 
+            {/* Bottom Footer */}
+            <footer className="w-full flex justify-between items-center fade-in flex-shrink-0 pb-safe-extra">
+              <div className="w-1/3">
+                <a
+                  href="mailto:bookings@qs1.berlin"
+                  onClick={handleContactClick}
+                  className="cursor-pointer px-2 py-1 text-gray-800 leading-tight bg-white text-xs sm:text-sm"
+                >
+                  CONTACT
+                </a>
+              </div>
+              <div className="w-1/3 text-center">
+                {/* Center footer content */}
+              </div>
+              <div className="w-1/3 text-right">
+                {/* <a 
                 href="/presskit"
                 className="cursor-pointer" 
                 style={labelStyle}
               >
                 PRESS KIT
               </a> */}
-              <span 
-                className="cursor-pointer px-2 py-1 text-gray-800 leading-tight bg-white text-xs sm:text-sm"
-                onClick={() => handleModalOpen('imprint')}
-              >
-                IMPRINT
-              </span>
-            </div>
-          </footer>
+                <span
+                  className="cursor-pointer px-2 py-1 text-gray-800 leading-tight bg-white text-xs sm:text-sm"
+                  onClick={() => handleModalOpen('imprint')}
+                >
+                  IMPRINT
+                </span>
+              </div>
+            </footer>
           </div>
         </section>
 
@@ -493,7 +493,7 @@ export default function Home() {
             <h1 id="artists-heading" className="sr-only">QS1 Berlin Artists</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 fade-in" role="grid" aria-label="Artist portfolio grid">
               {sortedArtists.map((artist, index) => (
-                <article 
+                <article
                   key={index}
                   className="cursor-pointer group"
                   onClick={() => handleArtistClick(artist)}
@@ -548,9 +548,9 @@ export default function Home() {
 
         {/* Modals */}
         {activeModal === 'artist' && selectedArtist && (
-          <ArtistProfile 
-            artist={selectedArtist} 
-            onClose={handleModalClose} 
+          <ArtistProfile
+            artist={selectedArtist}
+            onClose={handleModalClose}
             colors={colors}
           />
         )}
