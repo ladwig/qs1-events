@@ -8,7 +8,7 @@ import Imprint from "./components/Imprint";
 import QS1Info from "./components/QS1Info";
 import CustomCursor from "./components/CustomCursor";
 import SoundCloudModal from "./components/SoundCloudModal";
-import EcwidMerchModal from "./components/EcwidMerchModal";
+import MerchModal from "./components/MerchModal";
 import SilkBackground from "./components/SilkBackground";
 import { trackEvent, trackModalOpen, trackModalClose, trackReferrer, trackButtonClick } from "./utils/analytics";
 
@@ -52,7 +52,6 @@ export default function Home() {
   const [activeModal, setActiveModal] = useState(null);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
   const [colors, setColors] = useState(null);
-  const [merchModalKey, setMerchModalKey] = useState(0);
 
   useEffect(() => {
     setColors(generateColors());
@@ -296,7 +295,6 @@ export default function Home() {
     // Reset page title and prepare for fresh modal when closing merch modal
     if (activeModal === 'merch') {
       document.title = 'QS1 Berlin - Event & Booking Agency';
-      setMerchModalKey(prev => prev + 1); // Prepare fresh modal for next open
     }
 
     // Reset SEO meta tags when closing artist modal
@@ -568,7 +566,7 @@ export default function Home() {
         )}
 
         {activeModal === 'merch' && (
-          <EcwidMerchModal key={merchModalKey} onClose={handleModalClose} />
+          <MerchModal onClose={handleModalClose} />
         )}
       </div>
     </>
