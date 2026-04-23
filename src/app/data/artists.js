@@ -41,7 +41,7 @@ export const artists = [
     genre: ['GUINNESS'],
     hide: false,
     hideRequestButton: false,
-    description: "There is no filler story to his background. Hard digging for the best music, endless amount of hours honing and perfecting his technical ability. When on stage, Josh delivers the perfect blend of music to give the dance floor exactly what they need.\n\nHaving spent the last 10 years building his music library in vinyl and digital formats. Constantly fine tuning his sound and broadening the palette from which he can work from for his DJ sets. Having built himself up primarily in Dublin, working with his own collective and playing regular raves and in iconic clubs such as The Twisted Pepper, The Grand Social and The Button Factory, then travelling further afield with various residencies and performances in different clubs and cities from Berlin to Auckland\n\nJosh delivers exactly what he promises without fail and constantly shows us that his work and research is always developing and evolving. His style and signature sound is simple, flawlessly executing the art of Dj'ing with with a professionally crafted taste in punchy, fast paced and driving techno",
+    description: "A dynamic selector known for blending high-energy with sharp musical instinct. With a sound rooted in driving rhythms and atmospheric textures, Josh crafts sets that move seamlessly between deep cuts and crowd-lifting anthems, always reading the room and pushing the floor",
     imageUrl: '/artists/josh-reid/josh-reid-1.webp',
     pressPackUrl: '/press/josh-reid-press-kit.zip',
     socialLinks: {
