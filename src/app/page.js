@@ -9,6 +9,7 @@ import QS1Info from "./components/QS1Info";
 import CustomCursor from "./components/CustomCursor";
 import SoundCloudModal from "./components/SoundCloudModal";
 import MerchModal from "./components/MerchModal";
+import NewsletterModal from "./components/NewsletterModal";
 import SilkBackground from "./components/SilkBackground";
 import { trackEvent, trackModalOpen, trackModalClose, trackReferrer, trackButtonClick } from "./utils/analytics";
 
@@ -422,6 +423,12 @@ export default function Home() {
                   >
                     MERCH
                   </span>
+                  <span
+                    className="text-xs sm:text-sm cursor-pointer whitespace-nowrap px-2 py-1 text-gray-800 leading-tight bg-white"
+                    onClick={() => handleModalOpen('newsletter')}
+                  >
+                    NEWSLETTER
+                  </span>
                 </div>
               </div>
               <div className="w-full sm:w-1/3 flex justify-center items-center fade-in mb-0 sm:mb-0 mt-12 sm:mt-0">
@@ -567,6 +574,10 @@ export default function Home() {
 
         {activeModal === 'merch' && (
           <MerchModal onClose={handleModalClose} />
+        )}
+
+        {activeModal === 'newsletter' && (
+          <NewsletterModal onClose={handleModalClose} />
         )}
       </div>
     </>
