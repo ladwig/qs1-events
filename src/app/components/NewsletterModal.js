@@ -1,11 +1,17 @@
 'use client';
 
-// ponytail: hardcoded list — add a line when you drop a new <n>.html into public/newsletter/.
-const newsletters = [
-  { label: 'July 2026', file: '2.html' },
-];
+import { useEffect, useState } from 'react';
 
 export default function NewsletterModal({ onClose }) {
+  const [newsletters, setNewsletters] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/newsletters')
+      .then((r) => r.json())
+      .then(setNewsletters)
+      .catch(() => setNewsletters([]));
+  }, []);
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-auto bg-black bg-opacity-10"
