@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated from the newsletter HTMLs at build time
+/public/newsletter/pages/

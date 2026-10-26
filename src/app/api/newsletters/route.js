@@ -9,8 +9,13 @@ export const dynamic = 'force-static';
 const ANCHOR = { n: 2, year: 2026, month: 6 }; // month is 0-based
 
 export function GET() {
-  const items = fs
-    .readdirSync(path.join(process.cwd(), 'public/newsletter'))
+  const dir = path.join(process.cwd(), 'public/newsletter');
+  const files = fs.readdirSync(dir);
+  const pageFiles = fs.existsSync(path.join(dir, 'pages'))
+    ? fs.readdirSync(path.join(dir, 'pages'))
+    : [];
+
+  const items = files
     .map((f) => /^(\d+)\.html$/.exec(f))
     .filter(Boolean)
     .map((m) => Number(m[1]))
@@ -21,6 +26,11 @@ export function GET() {
         month: 'long',
         year: 'numeric',
       }),
+      // Page JPGs built by scripts/newsletter-images.mjs — used by the TV slideshow.
+      pages: pageFiles
+        .filter((f) => f.startsWith(`${n}-page`))
+        .sort((a, b) => parseInt(a.split('page')[1]) - parseInt(b.split('page')[1]))
+        .map((f) => `/newsletter/pages/${f}`),
     }));
 
   return Response.json(items);
